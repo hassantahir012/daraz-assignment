@@ -1,0 +1,9 @@
+export { default as logo } from "./logo.png";
+export { default as AppIcon } from "./app-icon.png";
+export { default as one } from "./1.jpg";
+export { default as two } from "./2.jpg";
+export { default as three } from "./3.jpg";
+export { default as four } from "./4.jpeg";
+export { default as five } from "./5.jpg";
+export { default as six } from "./6.jpg";
+export { default as BelowBanner } from "./below-banner-image.png";
