@@ -2,7 +2,9 @@ import { Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase_config";
+import { useNavigate } from "react-router-dom";
 function MainPageCategories() {
+  const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const getCategories = async () => {
     const result = await getDocs(collection(db, "categories"));
@@ -30,7 +32,15 @@ function MainPageCategories() {
       </div> */}
       <Grid container sx={{ bgcolor: "#fff" }}>
         {categories.map((category) => (
-          <Grid item xs={4} sm={3} md={2} lg={1.5} key={category.id}>
+          <Grid
+            item
+            xs={4}
+            sm={3}
+            md={2}
+            lg={1.5}
+            key={category.id}
+            onClick={() => navigate("/category")}
+          >
             <div className="card-categories-li align-left">
               <div className="d-flex flex-column justify-content-center h-100 category-card">
                 <div className="d-flex justify-content-center">

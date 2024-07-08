@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { AppIcon, logo } from "../assets";
 import { Menu, MenuItem, Stack } from "@mui/material";
+import { Link, useLocation } from "react-router-dom";
 
 function Header() {
   const [scroll, setScroll] = useState(0);
   const [width, setWidth] = useState(window.innerWidth);
   const [anchorEl, setAnchorEl] = useState();
+  const { pathname } = useLocation();
   const [displayCategories, setDisplayCategories] = useState({
     cat1: false,
     cat2: false,
@@ -26,13 +28,27 @@ function Header() {
   };
   const checkCursorPosition = (e) => {
     if (
-      e.clientX >= 220 &&
-      e.clientX <= 326 &&
-      e.clientY >= 14 &&
-      e.clientY <= 50 &&
-      scroll >= 600
+      (e.clientX >= 220 &&
+        e.clientX <= 326 &&
+        e.clientY >= 14 &&
+        e.clientY <= 50 &&
+        scroll >= 600) ||
+      (pathname == "/category" &&
+        scroll < 600 &&
+        e.clientX >= 212 &&
+        e.clientX <= 312 &&
+        e.clientY >= 37 &&
+        e.clientY <= 90)
     ) {
       setDisplayCategories((prev) => ({ ...prev, cat1: true }));
+    } else if (
+      e.clientY < 14 ||
+      (pathname == "/category" && scroll < 600 && e.clientY < 90)
+    ) {
+      setDisplayCategories({ cat1: false, cat2: false, cat3: false });
+    }
+    if (e.clientX > 326 && !displayCategories.cat2) {
+      setDisplayCategories({ cat1: false, cat2: false, cat3: false });
     }
   };
   useEffect(() => {
@@ -44,7 +60,7 @@ function Header() {
       window.removeEventListener("resize", checkWidth);
       window.removeEventListener("mousemove", checkCursorPosition);
     };
-  }, [scroll]);
+  }, [scroll, displayCategories]);
   return (
     <>
       {displayCategories.cat1 && (
@@ -55,7 +71,7 @@ function Header() {
             backgroundColor: "#fff",
             position: "fixed",
             zIndex: "2",
-            top: "75px",
+            top: scroll < 600 && pathname == "/category" ? "90px" : "75px",
             left: "6%",
             borderBottomLeftRadius: "8px",
           }}
@@ -70,8 +86,46 @@ function Header() {
               setDisplayCategories((prev) => ({ ...prev, cat2: true }))
             }
             onMouseLeave={(e) => {
-              if (e.clientX <= 80 || e.clientY >= 413) {
-                setDisplayCategories({ cat1: false, cat2: false, cat3: false });
+              if (pathname == "/category" && scroll < 600) {
+                if (
+                  (e.clientY <= 89 && (e.clientX <= 212 || e.clientX >= 316)) ||
+                  e.clientX <= 80 ||
+                  e.clientY >= 413
+                ) {
+                  setDisplayCategories({
+                    cat1: false,
+                    cat2: false,
+                    cat3: false,
+                  });
+                } else if (e.clientY <= 89) {
+                  setDisplayCategories((prev) => ({
+                    ...prev,
+                    cat2: false,
+                    cat3: false,
+                  }));
+                }
+              } else {
+                if (e.clientX <= 80 || e.clientY >= 413) {
+                  setDisplayCategories({
+                    cat1: false,
+                    cat2: false,
+                    cat3: false,
+                  });
+                }
+                if (e.clientY <= 89) {
+                  setDisplayCategories((prev) => ({
+                    ...prev,
+                    cat2: false,
+                    cat3: false,
+                  }));
+                }
+                if (e.clientY <= 74) {
+                  setDisplayCategories((prev) => ({
+                    ...prev,
+                    cat2: false,
+                    cat3: false,
+                  }));
+                }
               }
             }}
           >
@@ -158,7 +212,7 @@ function Header() {
             backgroundColor: "#fff",
             position: "fixed",
             zIndex: "2",
-            top: "75px",
+            top: scroll < 600 && pathname == "/category" ? "90px" : "75px",
             left: "24%",
           }}
         >
@@ -178,6 +232,12 @@ function Header() {
               }
               if (e.clientY >= 413) {
                 setDisplayCategories({ cat1: false, cat2: false, cat3: false });
+              } else if (e.clientY <= 74) {
+                setDisplayCategories((prev) => ({
+                  ...prev,
+                  cat2: false,
+                  cat3: false,
+                }));
               }
             }}
           >
@@ -264,7 +324,7 @@ function Header() {
             backgroundColor: "#fff",
             position: "fixed",
             zIndex: "2",
-            top: "75px",
+            top: scroll < 600 && pathname == "/category" ? "90px" : "75px",
             left: "42%",
             borderBottomRightRadius: "8px",
           }}
@@ -333,17 +393,18 @@ function Header() {
       )}
       <div
         className={`header${
-          scroll > 90 && scroll < 600 ? " nav-scroll-1" : ""
+          scroll > 90 && scroll < 600 && pathname == "/" ? " nav-scroll-1" : ""
         }${scroll >= 600 ? " nav-scroll-2" : ""}${
           width < 768 ? " small-header d-flex align-items-center" : ""
         }`}
+        style={{ position: pathname == "/category" && "fixed" }}
       >
         <div className="custom-container">
           {width >= 768 && (
             <>
               {scroll < 600 && (
                 <div className="d-flex align-items-center justify-content-between">
-                  <div className="d-flex gap-4">
+                  <div className="d-flex" style={{ gap: "1.55rem" }}>
                     <a href="" style={{ marginTop: "-5px" }}>
                       Become a Seller
                     </a>
@@ -392,25 +453,43 @@ function Header() {
                 className={`w-100${scroll >= 600 ? " mt-2" : ""}`}
               >
                 <div style={{ width: "140px" }}>
-                  <img
-                    src={logo}
-                    alt="logo"
-                    style={{ width: "120px", height: "48px" }}
-                  />
+                  <Link to="/">
+                    <img
+                      src={logo}
+                      alt="logo"
+                      style={{ width: "120px", height: "48px" }}
+                    />
+                  </Link>
                 </div>
                 <Stack
                   spacing={1}
                   direction={"row"}
                   alignItems={"center"}
-                  // justifyContent={"space-between"}
                   width={"100%"}
+                  sx={{
+                    marginLeft: pathname == "/category" ? "0.5rem" : "1.2rem",
+                    marginTop: "2px",
+                  }}
                 >
-                  {scroll >= 600 && (
+                  {(scroll >= 600 || pathname == "/category") && (
                     <div className="categories-button d-flex align-items-center">
-                      Categories <span class="tabler--chevron-down"></span>
+                      Categories{" "}
+                      {displayCategories.cat1 ? (
+                        <span class="tabler--chevron-up"></span>
+                      ) : (
+                        <span class="tabler--chevron-down"></span>
+                      )}
                     </div>
                   )}
-                  <div style={{ position: "relative", width: "70%" }}>
+                  <div
+                    style={{
+                      position: "relative",
+                      minWidth:
+                        pathname == "/category" || scroll >= 600
+                          ? "61.4%"
+                          : "71.4%",
+                    }}
+                  >
                     <input
                       placeholder="Search in Daraz"
                       style={{
@@ -429,12 +508,12 @@ function Header() {
                     <div
                       style={{
                         position: "absolute",
-                        top: 4,
-                        right: 10,
+                        top: 5,
+                        right: 6,
                         backgroundColor: "#FFE1D2",
-                        height: "30px",
-                        width: "52px",
-                        borderRadius: "10px",
+                        height: "28px",
+                        width: "50px",
+                        borderRadius: "8px",
                         paddingLeft: "18px",
                         paddingTop: "8px",
                       }}
@@ -452,23 +531,31 @@ function Header() {
                     direction={"row"}
                     alignItems={"center"}
                     spacing={1}
-                    className="categories-button "
-                    style={{ fontWeight: 700, fontSize: "12.5px" }}
-                  >
-                    <div>
-                      <i className="fa-regular fa-user"></i>
-                    </div>
-                    <div>Login</div>
-                  </Stack>
-                  <div>|</div>
-                  <Stack
-                    direction={"row"}
-                    alignItems={"center"}
-                    spacing={1}
                     className="categories-button"
                     style={{ fontWeight: 700, fontSize: "12.5px" }}
                   >
-                    <span>SignUp</span>
+                    <div>
+                      <i
+                        className="fa-regular fa-user"
+                        style={{ fontSize: "18px" }}
+                      ></i>
+                    </div>
+                    <div style={{ marginLeft: "12px" }}>Login</div>
+                  </Stack>
+                  <div style={{ marginLeft: "4px" }}>|</div>
+                  <Stack
+                    direction={"row"}
+                    alignItems={"center"}
+                    spacing={0}
+                    className="categories-button"
+                    sx={{
+                      fontWeight: 700,
+                      fontSize: "12.5px",
+                      marginLeft: 0,
+                      minWidth: "69px",
+                    }}
+                  >
+                    <span>Sign Up</span>
                   </Stack>
                   <Stack
                     direction={"row"}
@@ -479,6 +566,7 @@ function Header() {
                       fontWeight: 500,
                       fontSize: "14px",
                       height: "38px",
+                      marginLeft: "3px",
                     }}
                   >
                     <span className="mdi--web-white"></span>
@@ -495,9 +583,10 @@ function Header() {
                     spacing={1}
                     className="categories-button "
                     style={{
-                      fontWeight: 500,
-                      fontSize: "20px",
-                      height: "38px",
+                      // fontWeight: 500,
+                      // fontSize: "20px",
+                      // height: "38px",
+                      marginLeft: "8px",
                     }}
                   >
                     <span className="ep--shopping-cart"></span>

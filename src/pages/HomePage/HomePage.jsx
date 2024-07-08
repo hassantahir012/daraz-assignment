@@ -6,10 +6,11 @@ import Banner from "../../components/Banner";
 import CompanyLinks from "../../components/CompanyLinks";
 import Footer from "../../components/Footer";
 import MessageBox from "../../components/MessageBox";
-
+import Header from "../../components/Header";
 function HomePage() {
   return (
-    <>
+    <div className="homepage-body">
+      <Header />
       <div className="custom-container custom-container-body">
         <Banner />
         <MainPageCategories />
@@ -19,7 +20,7 @@ function HomePage() {
       </div>
       <Footer />
       <MessageBox />
-    </>
+    </div>
   );
 }
 

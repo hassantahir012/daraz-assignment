@@ -92,7 +92,9 @@ const Banner = () => {
                   <span className="category-icon">
                     <i className="fa-solid fa-basket-shopping"></i>
                   </span>
-                  <span>Groceries & Pets</span>
+                  <span className="banner-category-title">
+                    Groceries & Pets
+                  </span>
                 </li>
                 <li>
                   <span className="category-icon">
@@ -104,61 +106,75 @@ const Banner = () => {
                   <span className="category-icon">
                     <i className="fa-solid fa-shirt"></i>
                   </span>
-                  <span>Men's Fashion</span>
+                  <span className="banner-category-title">Men's Fashion</span>
                 </li>
                 <li>
                   <span className="category-icon">
                     <i className="fa-solid fa-shirt"></i>
                   </span>
-                  <span>Women's Fashion</span>
+                  <span className="banner-category-title">Women's Fashion</span>
                 </li>
                 <li>
                   <span className="category-icon">
                     <i className="fa-solid fa-children"></i>
                   </span>
-                  <span>Mother & Baby</span>
+                  <span className="banner-category-title">Mother & Baby</span>
                 </li>
                 <li>
                   <span className="category-icon">
                     <i className="fa-solid fa-couch"></i>
                   </span>
-                  <span>Home & Lifestyle</span>
+                  <span className="banner-category-title">
+                    Home & Lifestyle
+                  </span>
                 </li>
                 <li>
                   <span className="category-icon">
                     <i className="fa-solid fa-laptop"></i>
                   </span>
-                  <span>Electronic Devices</span>
+                  <span className="banner-category-title">
+                    Electronic Devices
+                  </span>
                 </li>
                 <li>
                   <span className="category-icon">
                     <i className="fa-solid fa-computer-mouse"></i>
                   </span>
-                  <span>Electronic Accessories</span>
+                  <span className="banner-category-title">
+                    Electronic Accessories
+                  </span>
                 </li>
                 <li>
                   <span className="category-icon">
                     <i className="fa-solid fa-tv"></i>
                   </span>
-                  <span>TV & Home Appliances</span>
+                  <span className="banner-category-title">
+                    TV & Home Appliances
+                  </span>
                 </li>
                 <li>
                   <span className="category-icon">
                     <i className="fa-solid fa-basketball"></i>
                   </span>
-                  <span>Sports & Outdoor</span>
+                  <span className="banner-category-title">
+                    Sports & Outdoor
+                  </span>
                 </li>
                 <li>
                   <span className="category-icon">
                     <i className="fa-solid fa-briefcase"></i>
                   </span>
-                  <span>Watches, Bags & Jewellery</span>
+                  <span className="banner-category-title">
+                    Watches, Bags & Jewellery
+                  </span>
                 </li>
                 <li>
                   <span className="category-icon">
                     <i className="fa-solid fa-car-side"></i>
                   </span>
-                  <span>Automotive & Motorbike</span>
+                  <span className="banner-category-title">
+                    Automotive & Motorbike
+                  </span>
                 </li>
               </ul>
             </div>
@@ -193,7 +209,10 @@ const Banner = () => {
           alignItems={"center"}
           flexWrap={"wrap"}
           sx={{
-            justifyContent: "space-between",
+            justifyContent: {
+              xs: "flex-start",
+              xl: "space-between",
+            },
           }}
         >
           {features.map((feature, index) => (

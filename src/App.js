@@ -1,14 +1,10 @@
-import Header from "./components/Header";
-import HomePage from "./pages/HomePage/HomePage";
 import "./App.css";
 import ThemeProvider from "./theme";
+import Router from "./routes";
 function App() {
   return (
     <ThemeProvider>
-      <div>
-        <Header />
-        <HomePage />
-      </div>
+      <Router />
     </ThemeProvider>
   );
 }
