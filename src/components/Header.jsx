@@ -397,7 +397,7 @@ function Header() {
         }${scroll >= 600 ? " nav-scroll-2" : ""}${
           width < 768 ? " small-header d-flex align-items-center" : ""
         }`}
-        style={{ position: pathname == "/category" && "fixed" }}
+        style={{ position: pathname !== "/" && "fixed" }}
       >
         <div className="custom-container">
           {width >= 768 && (
@@ -467,17 +467,17 @@ function Header() {
                   alignItems={"center"}
                   width={"100%"}
                   sx={{
-                    marginLeft: pathname == "/category" ? "0.5rem" : "1.2rem",
+                    marginLeft: pathname !== "/" ? "0.5rem" : "1.2rem",
                     marginTop: "2px",
                   }}
                 >
-                  {(scroll >= 600 || pathname == "/category") && (
+                  {(scroll >= 600 || pathname !== "/") && (
                     <div className="categories-button d-flex align-items-center">
                       Categories{" "}
                       {displayCategories.cat1 ? (
-                        <span class="tabler--chevron-up"></span>
+                        <span className="tabler--chevron-up"></span>
                       ) : (
-                        <span class="tabler--chevron-down"></span>
+                        <span className="tabler--chevron-down"></span>
                       )}
                     </div>
                   )}
@@ -485,13 +485,15 @@ function Header() {
                     style={{
                       position: "relative",
                       minWidth:
-                        pathname == "/category" || scroll >= 600
-                          ? "61.4%"
-                          : "71.4%",
+                        pathname !== "/" || scroll >= 600 ? "61.4%" : "71.4%",
                     }}
                   >
                     <input
-                      placeholder="Search in Daraz"
+                      placeholder={
+                        pathname == "/login" || pathname == "/register"
+                          ? ""
+                          : "Search in Daraz"
+                      }
                       style={{
                         border: "none",
                         outline: "none",
@@ -504,59 +506,67 @@ function Header() {
                         fontSize: "14px",
                         color: "#212121",
                       }}
+                      disabled={pathname == "/login" || pathname == "/register"}
                     />
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: 5,
-                        right: 6,
-                        backgroundColor: "#FFE1D2",
-                        height: "28px",
-                        width: "50px",
-                        borderRadius: "8px",
-                        paddingLeft: "18px",
-                        paddingTop: "8px",
+                    {!["/login", "/register"].includes(pathname) && (
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: 5,
+                          right: 6,
+                          backgroundColor: "#FFE1D2",
+                          height: "28px",
+                          width: "50px",
+                          borderRadius: "8px",
+                          paddingLeft: "18px",
+                          paddingTop: "8px",
+                        }}
+                      >
+                        <i
+                          className="fa-solid fa-magnifying-glass"
+                          style={{
+                            color: "#f85606",
+                            fontSize: "15px",
+                          }}
+                        ></i>
+                      </div>
+                    )}
+                  </div>
+                  <Link to={"/login"}>
+                    <Stack
+                      direction={"row"}
+                      alignItems={"center"}
+                      spacing={1}
+                      className="categories-button"
+                      style={{ fontWeight: 700, fontSize: "12.5px" }}
+                    >
+                      <div>
+                        <i
+                          className="fa-regular fa-user"
+                          style={{ fontSize: "18px" }}
+                        ></i>
+                      </div>
+
+                      <div style={{ marginLeft: "12px" }}>Login</div>
+                    </Stack>
+                  </Link>
+                  <div style={{ marginLeft: "4px" }}>|</div>
+                  <Link to={"/register"}>
+                    <Stack
+                      direction={"row"}
+                      alignItems={"center"}
+                      spacing={0}
+                      className="categories-button"
+                      sx={{
+                        fontWeight: 700,
+                        fontSize: "12.5px",
+                        marginLeft: 0,
+                        minWidth: "69px",
                       }}
                     >
-                      <i
-                        className="fa-solid fa-magnifying-glass"
-                        style={{
-                          color: "#f85606",
-                          fontSize: "15px",
-                        }}
-                      ></i>
-                    </div>
-                  </div>
-                  <Stack
-                    direction={"row"}
-                    alignItems={"center"}
-                    spacing={1}
-                    className="categories-button"
-                    style={{ fontWeight: 700, fontSize: "12.5px" }}
-                  >
-                    <div>
-                      <i
-                        className="fa-regular fa-user"
-                        style={{ fontSize: "18px" }}
-                      ></i>
-                    </div>
-                    <div style={{ marginLeft: "12px" }}>Login</div>
-                  </Stack>
-                  <div style={{ marginLeft: "4px" }}>|</div>
-                  <Stack
-                    direction={"row"}
-                    alignItems={"center"}
-                    spacing={0}
-                    className="categories-button"
-                    sx={{
-                      fontWeight: 700,
-                      fontSize: "12.5px",
-                      marginLeft: 0,
-                      minWidth: "69px",
-                    }}
-                  >
-                    <span>Sign Up</span>
-                  </Stack>
+                      <span>Sign Up</span>
+                    </Stack>
+                  </Link>
                   <Stack
                     direction={"row"}
                     alignItems={"center"}

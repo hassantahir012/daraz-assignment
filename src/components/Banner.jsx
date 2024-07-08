@@ -233,7 +233,7 @@ const Banner = () => {
               )}
               {index === features.length - 1 && (
                 <div style={{ fontSize: "13px" }}>
-                  <i class="fa-solid fa-chevron-right"></i>
+                  <i className="fa-solid fa-chevron-right"></i>
                 </div>
               )}
             </>

@@ -1,13 +1,20 @@
 import React from "react";
 import { AppIcon } from "../assets";
+import { useLocation } from "react-router-dom";
 
 function CompanyLinks() {
+  const { pathname } = useLocation();
   return (
     <section className="desktop-footer">
       <div style={{ padding: "22px 0 30px" }} className="footer-first">
         <div className="row">
           <div className="col-md-3 col-sm-4 col-xs-6">
-            <h3 className="footer-title footer-title-first">Customer Care</h3>
+            <h3
+              className="footer-title footer-title-first"
+              style={{ marginTop: pathname !== "/" ? 0 : "" }}
+            >
+              Customer Care
+            </h3>
             <ul className="footer-list">
               <li className="footer-li">
                 <a href="">Help Center</a>
@@ -47,8 +54,16 @@ function CompanyLinks() {
               </li>
             </ul>
           </div>
-          <div className="col-md-3 col-sm-4 col-xs-6">
-            <h3 className="footer-title footer-title-first">Daraz</h3>
+          <div
+            className="col-md-3 col-sm-4 col-xs-6"
+            style={{ paddingLeft: "21px" }}
+          >
+            <h3
+              className="footer-title footer-title-first"
+              style={{ marginTop: pathname !== "/" ? 0 : "" }}
+            >
+              Daraz
+            </h3>
             <ul className="footer-list">
               <li className="footer-li">
                 <a href="">About Us</a>
@@ -85,8 +100,14 @@ function CompanyLinks() {
               </li>
             </ul>
           </div>
-          <div className="col-md-3 col-sm-4 col-xs-6">
-            <h3 className="footer-title footer-title-first">
+          <div
+            className="col-md-3 col-sm-4 col-xs-6"
+            style={{ paddingLeft: "31px" }}
+          >
+            <h3
+              className="footer-title footer-title-first"
+              style={{ marginTop: pathname !== "/" ? 0 : "" }}
+            >
               Daraz International
             </h3>
             <div className="d-flex align-content-center flex-wrap">
@@ -122,41 +143,41 @@ function CompanyLinks() {
               </a>
             </div>
             <h3 className="footer-title">Payment Methods</h3>
-            <div class="payment__card__wrapper">
-              <span class="drz-icon-payment icon-yatra-exists-payment-1">
-                <span class=" drz-footer-sprit-link drz-footer-sprit icon-yatra-payment-1"></span>
+            <div className="payment__card__wrapper">
+              <span className="drz-icon-payment icon-yatra-exists-payment-1">
+                <span className=" drz-footer-sprit-link drz-footer-sprit icon-yatra-payment-1"></span>
               </span>
 
-              <span class="drz-icon-payment icon-yatra-exists-payment-7">
-                <span class=" drz-footer-sprit-link drz-footer-sprit icon-yatra-payment-7"></span>
+              <span className="drz-icon-payment icon-yatra-exists-payment-7">
+                <span className=" drz-footer-sprit-link drz-footer-sprit icon-yatra-payment-7"></span>
               </span>
 
-              <span class="drz-icon-payment icon-yatra-exists-payment-8">
-                <span class=" drz-footer-sprit-link drz-footer-sprit icon-yatra-payment-8"></span>
+              <span className="drz-icon-payment icon-yatra-exists-payment-8">
+                <span className=" drz-footer-sprit-link drz-footer-sprit icon-yatra-payment-8"></span>
               </span>
 
-              <span class="drz-icon-payment icon-yatra-exists-payment-11">
-                <span class=" drz-footer-sprit-link drz-footer-sprit icon-yatra-payment-11"></span>
+              <span className="drz-icon-payment icon-yatra-exists-payment-11">
+                <span className=" drz-footer-sprit-link drz-footer-sprit icon-yatra-payment-11"></span>
               </span>
 
-              <span class="drz-icon-payment icon-yatra-exists-payment-5">
-                <span class=" drz-footer-sprit-link drz-footer-sprit icon-yatra-payment-5"></span>
+              <span className="drz-icon-payment icon-yatra-exists-payment-5">
+                <span className=" drz-footer-sprit-link drz-footer-sprit icon-yatra-payment-5"></span>
               </span>
 
-              <span class="drz-icon-payment icon-yatra-exists-payment-12">
-                <span class=" drz-footer-sprit-link drz-footer-sprit icon-yatra-payment-12"></span>
+              <span className="drz-icon-payment icon-yatra-exists-payment-12">
+                <span className=" drz-footer-sprit-link drz-footer-sprit icon-yatra-payment-12"></span>
               </span>
 
-              <span class="drz-icon-payment icon-yatra-exists-payment-6">
-                <span class=" drz-footer-sprit-link drz-footer-sprit icon-yatra-payment-6"></span>
+              <span className="drz-icon-payment icon-yatra-exists-payment-6">
+                <span className=" drz-footer-sprit-link drz-footer-sprit icon-yatra-payment-6"></span>
               </span>
 
-              <span class="drz-icon-payment icon-yatra-exists-payment-20">
-                <span class=" drz-footer-sprit-link drz-footer-sprit icon-yatra-payment-20"></span>
+              <span className="drz-icon-payment icon-yatra-exists-payment-20">
+                <span className=" drz-footer-sprit-link drz-footer-sprit icon-yatra-payment-20"></span>
               </span>
 
-              <span class="drz-icon-payment icon-yatra-exists-payment-13">
-                <span class=" drz-footer-sprit-link drz-footer-sprit icon-yatra-payment-13"></span>
+              <span className="drz-icon-payment icon-yatra-exists-payment-13">
+                <span className=" drz-footer-sprit-link drz-footer-sprit icon-yatra-payment-13"></span>
               </span>
             </div>
             {/* <div className="payment-methods">
@@ -214,11 +235,17 @@ function CompanyLinks() {
             </div> */}
             <h3 className="footer-title">Verified by</h3>
             <div className="verified-by">
-              <span class="icon-yatra-pci drz-footer-sprit-link"></span>
+              <span className="icon-yatra-pci drz-footer-sprit-link"></span>
             </div>
           </div>
-          <div className="col-md-3 col-sm-4 col-xs-6">
-            <h3 className="footer-title footer-title-first">
+          <div
+            className="col-md-3 col-sm-4 col-xs-6"
+            style={{ paddingLeft: "40px" }}
+          >
+            <h3
+              className="footer-title footer-title-first"
+              style={{ marginTop: pathname !== "/" ? 0 : "" }}
+            >
               Exclusive Deals and Offers!
             </h3>
             <div className="links-wrapper">
@@ -241,11 +268,11 @@ function CompanyLinks() {
             </div>
             <div className="happy-shoping-wrapper">
               <div className="daraz-logo-wrapper">
-                <span class="drz-footer-sprit-link icon-logo-lazada-footer"></span>
+                <span className="drz-footer-sprit-link icon-logo-lazada-footer"></span>
               </div>
               <div className="text-wrapper">
                 <span className="drz-footer-sprit-download">
-                  <span class="drz-footer-sprit-link icon-yatra-happy-shopping"></span>
+                  <span className="drz-footer-sprit-link icon-yatra-happy-shopping"></span>
                 </span>
                 <div className="text">Download App</div>
               </div>

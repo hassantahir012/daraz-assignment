@@ -132,9 +132,9 @@ function Footer() {
           </div>
           <div className="col-6 col-md-3 p-0">
             <div className="drz-footer-top-category drz-footer-category-left">
-              <h3 class="drz-footer-title">Top Categories &amp; Brands</h3>
-              <div class="drz-footer-category-division">
-                <h4 class="drz-footer-title-small">
+              <h3 className="drz-footer-title">Top Categories &amp; Brands</h3>
+              <div className="drz-footer-category-division">
+                <h4 className="drz-footer-title-small">
                   <a href="">Mobile Phones in Pakistan</a>
                 </h4>
                 <a className="drz-footer-category-tag" href="">
@@ -604,7 +604,7 @@ function Footer() {
                   Thailand
                 </a>
               </div>
-              <a href="" class="drz-footer-see-more-link J_FooterMore">
+              <a href="" className="drz-footer-see-more-link J_FooterMore">
                 See more links
               </a>
             </div>
