@@ -5,8 +5,10 @@ import React, { useEffect, useState } from "react";
 import { auth, db } from "../../../firebase_config";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { useSnackbar } from "notistack";
 
 function RegisterForm({ showPassword, setShowPassword }) {
+  const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
   const [width, setWidth] = useState(window.innerWidth);
   const [inputs, setInputs] = useState({
@@ -15,6 +17,16 @@ function RegisterForm({ showPassword, setShowPassword }) {
     password: "",
     full_name: "",
     date_of_birth: "",
+  });
+  const [errors, setErrors] = useState({
+    email_error: false,
+    email_error_message: "",
+    password_error: false,
+    password_error_message: "",
+    full_name_error: false,
+    full_name_error_message: "",
+    whatsapp_verification_code_error: false,
+    whatsapp_verification_code_error_message: "",
   });
   const [loading, setLoading] = useState(false);
   const checkWidth = () => {
@@ -25,7 +37,47 @@ function RegisterForm({ showPassword, setShowPassword }) {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!inputs.email || !inputs.password || !inputs.full_name) return;
+    if (
+      errors.email_error ||
+      errors.full_name_error ||
+      errors.password_error ||
+      errors.whatsapp_verification_code_error
+    )
+      return;
+    let err = false;
+    if (!inputs.email) {
+      setErrors((prev) => ({
+        ...prev,
+        email_error: true,
+        email_error_message: "You can't leave this empty.",
+      }));
+      err = true;
+    }
+    if (!inputs.password) {
+      setErrors((prev) => ({
+        ...prev,
+        password_error: true,
+        password_error_message: "You can't leave this empty.",
+      }));
+      err = true;
+    }
+    if (!inputs.whatsapp_verification_code) {
+      setErrors((prev) => ({
+        ...prev,
+        whatsapp_verification_code_error: true,
+        whatsapp_verification_code_error_message: "You can't leave this empty.",
+      }));
+      err = true;
+    }
+    if (!inputs.full_name) {
+      setErrors((prev) => ({
+        ...prev,
+        full_name_error: true,
+        full_name_error_message: "You can't leave this empty.",
+      }));
+      err = true;
+    }
+    if (err) return;
     setLoading(true);
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -40,8 +92,10 @@ function RegisterForm({ showPassword, setShowPassword }) {
         full_name: inputs.full_name,
         createdAt: new Date().toISOString(),
       });
+      enqueueSnackbar("Registration Successfull", { variant: "success" });
       navigate("/login");
     } catch (error) {
+      enqueueSnackbar(error.message, { variant: "error" });
       console.log(error, " catched while creating a user");
     } finally {
       setLoading(false);
@@ -66,9 +120,39 @@ function RegisterForm({ showPassword, setShowPassword }) {
                 data-meta="Field"
                 defaultValue=""
                 name="email"
-                onChange={handleInputsChange}
+                onChange={(e) => {
+                  if (e.target.value === "") {
+                    setErrors((prev) => ({
+                      ...prev,
+                      email_error: true,
+                      email_error_message: "You can't leave this empty.",
+                    }));
+                  } else if (
+                    e.target.value.length < 6 ||
+                    e.target.value.length > 60
+                  ) {
+                    setErrors((prev) => ({
+                      ...prev,
+                      email_error: true,
+                      email_error_message:
+                        "The length of the Email should be 6-60 characters.",
+                    }));
+                  } else {
+                    setErrors((prev) => ({
+                      ...prev,
+                      email_error: false,
+                      email_error_message: "",
+                    }));
+                  }
+                  handleInputsChange(e);
+                }}
+                style={{
+                  border: errors.email_error ? "1px solid #f44336" : "",
+                }}
               />
-              <span></span>
+              <span style={{ visibility: errors.email_error ? "visible" : "" }}>
+                {errors.email_error_message}
+              </span>
             </div>
             {width < 768 && (
               <div className="mod-input mod-login-input-loginName mod-input-loginName">
@@ -79,9 +163,43 @@ function RegisterForm({ showPassword, setShowPassword }) {
                   data-meta="Field"
                   defaultValue=""
                   name="full_name"
-                  onChange={handleInputsChange}
+                  onChange={(e) => {
+                    if (e.target.value === "") {
+                      setErrors((prev) => ({
+                        ...prev,
+                        full_name_error: true,
+                        full_name_error_message: "You can't leave this empty.",
+                      }));
+                    } else if (
+                      e.target.value.length < 2 ||
+                      e.target.value.length > 50
+                    ) {
+                      setErrors((prev) => ({
+                        ...prev,
+                        full_name_error: true,
+                        full_name_error_message:
+                          "The name length should be 2 - 50 characters.",
+                      }));
+                    } else {
+                      setErrors((prev) => ({
+                        ...prev,
+                        full_name_error: false,
+                        full_name_error_message: "",
+                      }));
+                    }
+                    handleInputsChange(e);
+                  }}
+                  style={{
+                    border: errors.full_name_error ? "1px solid #f44336" : "",
+                  }}
                 />
-                <span></span>
+                <span
+                  style={{
+                    visibility: errors.full_name_error ? "visible" : "",
+                  }}
+                >
+                  {errors.full_name_error_message}
+                </span>
               </div>
             )}
             <div className="mod-input mod-login-input-loginName mod-input-loginName">
@@ -92,9 +210,47 @@ function RegisterForm({ showPassword, setShowPassword }) {
                 data-meta="Field"
                 defaultValue=""
                 name="whatsapp_verification_code"
-                onChange={handleInputsChange}
+                onChange={(e) => {
+                  if (/[0-9]/.test(e.target.value) || e.target.value === "") {
+                    if (e.target.value === "") {
+                      setErrors((prev) => ({
+                        ...prev,
+                        whatsapp_verification_code_error: true,
+                        whatsapp_verification_code_error_message:
+                          "You can't leave this empty.",
+                      }));
+                    } else if (e.target.value.length !== 6) {
+                      setErrors((prev) => ({
+                        ...prev,
+                        whatsapp_verification_code_error: true,
+                        whatsapp_verification_code_error_message:
+                          "Please enter 6 digits",
+                      }));
+                    } else {
+                      setErrors((prev) => ({
+                        ...prev,
+                        whatsapp_verification_code_error: false,
+                        whatsapp_verification_code_error_message: "",
+                      }));
+                    }
+                    handleInputsChange(e);
+                  }
+                }}
+                style={{
+                  border: errors.whatsapp_verification_code_error
+                    ? "1px solid #f44336"
+                    : "",
+                }}
               />
-              <span></span>
+              <span
+                style={{
+                  visibility: errors.whatsapp_verification_code_error
+                    ? "visible"
+                    : "",
+                }}
+              >
+                {errors.whatsapp_verification_code_error_message}
+              </span>
               <div
                 className="mod-input-password-icon mod-login-forgot"
                 style={{ color: "#999", marginTop: "2px" }}
@@ -110,9 +266,55 @@ function RegisterForm({ showPassword, setShowPassword }) {
                 data-meta="Field"
                 defaultValue=""
                 name="password"
-                onChange={handleInputsChange}
+                onChange={(e) => {
+                  if (e.target.value === "") {
+                    setErrors((prev) => ({
+                      ...prev,
+                      password_error: true,
+                      password_error_message: "You can't leave this empty.",
+                    }));
+                  } else if (
+                    e.target.value.length < 6 ||
+                    e.target.value.length > 60
+                  ) {
+                    setErrors((prev) => ({
+                      ...prev,
+                      password_error: true,
+                      password_error_message:
+                        "The length of Password should be 6-50 characters.",
+                    }));
+                  } else if (
+                    !(
+                      /[a-zA-Z]/.test(e.target.value) &&
+                      /[0-9]/.test(e.target.value)
+                    )
+                  ) {
+                    setErrors((prev) => ({
+                      ...prev,
+                      password_error: true,
+                      password_error_message:
+                        "Password should contain alphabetic and numeric characters.",
+                    }));
+                  } else {
+                    setErrors((prev) => ({
+                      ...prev,
+                      password_error: false,
+                      password_error_message: "",
+                    }));
+                  }
+                  handleInputsChange(e);
+                }}
+                style={{
+                  border: errors.password_error ? "1px solid #f44336" : "",
+                }}
               />
-              <span></span>
+              <span
+                style={{
+                  visibility: errors.password_error ? "visible" : "",
+                }}
+              >
+                {errors.password_error_message}
+              </span>
               <div className="mod-input-password-icon">
                 {!showPassword && (
                   <Icon
@@ -145,9 +347,46 @@ function RegisterForm({ showPassword, setShowPassword }) {
                       data-meta="Field"
                       defaultValue=""
                       name="full_name"
-                      onChange={handleInputsChange}
+                      onChange={(e) => {
+                        if (e.target.value === "") {
+                          setErrors((prev) => ({
+                            ...prev,
+                            full_name_error: true,
+                            full_name_error_message:
+                              "You can't leave this empty.",
+                          }));
+                        } else if (
+                          e.target.value.length < 2 ||
+                          e.target.value.length > 50
+                        ) {
+                          setErrors((prev) => ({
+                            ...prev,
+                            full_name_error: true,
+                            full_name_error_message:
+                              "The name length should be 2 - 50 characters.",
+                          }));
+                        } else {
+                          setErrors((prev) => ({
+                            ...prev,
+                            full_name_error: false,
+                            full_name_error_message: "",
+                          }));
+                        }
+                        handleInputsChange(e);
+                      }}
+                      style={{
+                        border: errors.full_name_error
+                          ? "1px solid #f44336"
+                          : "",
+                      }}
                     />
-                    <span></span>
+                    <span
+                      style={{
+                        visibility: errors.full_name_error ? "visible" : "",
+                      }}
+                    >
+                      {errors.full_name_error_message}
+                    </span>
                   </div>
                 )}
                 <div className="mod-login-receive">
