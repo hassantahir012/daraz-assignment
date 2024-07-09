@@ -120,6 +120,7 @@ function RegisterForm({ showPassword, setShowPassword }) {
                 data-meta="Field"
                 defaultValue=""
                 name="email"
+                value={inputs.email}
                 onChange={(e) => {
                   if (e.target.value === "") {
                     setErrors((prev) => ({
@@ -156,13 +157,14 @@ function RegisterForm({ showPassword, setShowPassword }) {
             </div>
             {width < 768 && (
               <div className="mod-input mod-login-input-loginName mod-input-loginName">
-                <label htmlFor="">Full Name*</label>
+                <label htmlFor="">Full name*</label>
                 <input
                   type="text"
                   placeholder="Enter your first and last name"
                   data-meta="Field"
                   defaultValue=""
                   name="full_name"
+                  value={inputs.full_name}
                   onChange={(e) => {
                     if (e.target.value === "") {
                       setErrors((prev) => ({
@@ -210,8 +212,12 @@ function RegisterForm({ showPassword, setShowPassword }) {
                 data-meta="Field"
                 defaultValue=""
                 name="whatsapp_verification_code"
+                value={inputs.whatsapp_verification_code}
                 onChange={(e) => {
-                  if (/[0-9]/.test(e.target.value) || e.target.value === "") {
+                  if (
+                    /^[0-9]+$/.test(e.target.value) ||
+                    e.target.value === ""
+                  ) {
                     if (e.target.value === "") {
                       setErrors((prev) => ({
                         ...prev,
@@ -266,6 +272,7 @@ function RegisterForm({ showPassword, setShowPassword }) {
                 data-meta="Field"
                 defaultValue=""
                 name="password"
+                value={inputs.password}
                 onChange={(e) => {
                   if (e.target.value === "") {
                     setErrors((prev) => ({
@@ -340,13 +347,14 @@ function RegisterForm({ showPassword, setShowPassword }) {
               <div style={{ width: "305px" }}>
                 {width >= 768 && (
                   <div className="mod-input mod-login-input-loginName mod-input-loginName">
-                    <label htmlFor="">Full Name*</label>
+                    <label htmlFor="">Full name*</label>
                     <input
                       type="text"
                       placeholder="Enter your first and last name"
                       data-meta="Field"
                       defaultValue=""
                       name="full_name"
+                      value={inputs.full_name}
                       onChange={(e) => {
                         if (e.target.value === "") {
                           setErrors((prev) => ({
@@ -392,9 +400,17 @@ function RegisterForm({ showPassword, setShowPassword }) {
                 <div className="mod-login-receive">
                   <input
                     type="checkbox"
-                    style={{ marginTop: "-14px", marginRight: "9px" }}
+                    style={{
+                      width: "16px",
+                      height: "16px",
+                      marginRight: "9px",
+                      marginTop: "1px",
+                    }}
                   />
-                  <p className="m-0" style={{ lineHeight: "1.15" }}>
+                  <p
+                    className="m-0"
+                    style={{ lineHeight: "1.15", paddingRight: "1px" }}
+                  >
                     I'd like to receive exclusive offers and promotions via SMS
                   </p>
                 </div>
@@ -404,7 +420,7 @@ function RegisterForm({ showPassword, setShowPassword }) {
                     className="next-btn next-btn-primary next-btn-large"
                     disabled={loading}
                   >
-                    {!loading ? "SIGN UP" : "SIGNING UP..."}
+                    {!loading ? "SIGN UP" : "Please Wait..."}
                   </button>
                 </div>
                 <div

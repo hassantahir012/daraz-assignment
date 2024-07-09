@@ -77,6 +77,7 @@ function LoginForm({ showPassword, setShowPassword }) {
                 data-meta="Field"
                 defaultValue=""
                 name="email"
+                value={inputs.email}
                 onChange={(e) => {
                   if (e.target.value === "") {
                     setErrors((prev) => ({
@@ -119,6 +120,7 @@ function LoginForm({ showPassword, setShowPassword }) {
                 data-meta="Field"
                 defaultValue=""
                 name="password"
+                value={inputs.password}
                 onChange={(e) => {
                   if (e.target.value === "") {
                     setErrors((prev) => ({
