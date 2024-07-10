@@ -1006,8 +1006,8 @@ body {
   -webkit-box-align: center;
   align-items: center;
   margin-right: 4px;
-  min-width: 32px;
-  height: 16px;
+  min-width: 48px;
+  height: 32px;
 }
 .review-new-wrapper .review-options .review-tags-box .review-tag .photo-logo {
   width: 16px;

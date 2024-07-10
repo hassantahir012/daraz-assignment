@@ -395,12 +395,14 @@ function Ratings() {
           <div className="review-filter">
             <div className="review-tags-box">
               <div className="review-tag">
-                <img
-                  alt=""
-                  className="photo-logo"
-                  src="https://gw.alicdn.com/imgextra/i1/O1CN0100OUEE1vOhoypFAFV_!!6000000006163-2-tps-64-64.png"
-                />
-                Photos(389)
+                <div>
+                  <img
+                    alt=""
+                    className="photo-logo"
+                    src="https://gw.alicdn.com/imgextra/i1/O1CN0100OUEE1vOhoypFAFV_!!6000000006163-2-tps-64-64.png"
+                  />
+                  Photos(389)
+                </div>
               </div>
               <div className="review-tag">
                 <div
