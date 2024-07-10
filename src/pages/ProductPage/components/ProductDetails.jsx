@@ -350,8 +350,19 @@ function ProductDetails() {
             </div>
           </Grid>
           <Grid item xs={12} xl={3.34}>
-            <Grid container spacing={1.25}>
-              <Grid item xs={12} sm={6} xl={12}>
+            <Grid container>
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                xl={12}
+                sx={{
+                  mt: {
+                    xs: 1,
+                    xl: 0,
+                  },
+                }}
+              >
                 <div className="delivery">
                   <div className="delivery-header">
                     <div className="delivery-header__title">Delivery</div>
@@ -546,7 +557,13 @@ function ProductDetails() {
                   </div>
                 </div>
               </Grid>
-              <Grid item xs={12} sm={6} xl={12}>
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                xl={12}
+                sx={{ pl: { xs: 0, sm: 1, xl: 0 } }}
+              >
                 <div className="seller-container" data-spm="seller">
                   <div className="seller-name-retail">
                     <div className="seller-name__wrapper">

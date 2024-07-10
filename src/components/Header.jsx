@@ -33,7 +33,7 @@ function Header() {
         e.clientY >= 14 &&
         e.clientY <= 50 &&
         scroll >= 600) ||
-      (pathname == "/category" &&
+      ((pathname == "/category" || pathname == "/product") &&
         scroll < 600 &&
         e.clientX >= 212 &&
         e.clientX <= 312 &&
@@ -43,7 +43,9 @@ function Header() {
       setDisplayCategories((prev) => ({ ...prev, cat1: true }));
     } else if (
       e.clientY < 14 ||
-      (pathname == "/category" && scroll < 600 && e.clientY < 90)
+      ((pathname == "/category" || pathname == "/product") &&
+        scroll < 600 &&
+        e.clientY < 90)
     ) {
       setDisplayCategories({ cat1: false, cat2: false, cat3: false });
     }
@@ -71,7 +73,11 @@ function Header() {
             backgroundColor: "#fff",
             position: "fixed",
             zIndex: "2",
-            top: scroll < 600 && pathname == "/category" ? "90px" : "75px",
+            top:
+              scroll < 600 &&
+              (pathname == "/category" || pathname == "/product")
+                ? "90px"
+                : "75px",
             left: "6%",
             borderBottomLeftRadius: "8px",
           }}
@@ -86,7 +92,10 @@ function Header() {
               setDisplayCategories((prev) => ({ ...prev, cat2: true }))
             }
             onMouseLeave={(e) => {
-              if (pathname == "/category" && scroll < 600) {
+              if (
+                (pathname == "/category" || pathname == "/product") &&
+                scroll < 600
+              ) {
                 if (
                   (e.clientY <= 89 && (e.clientX <= 212 || e.clientX >= 316)) ||
                   e.clientX <= 80 ||
@@ -212,7 +221,11 @@ function Header() {
             backgroundColor: "#fff",
             position: "fixed",
             zIndex: "2",
-            top: scroll < 600 && pathname == "/category" ? "90px" : "75px",
+            top:
+              scroll < 600 &&
+              (pathname == "/category" || pathname == "/product")
+                ? "90px"
+                : "75px",
             left: "24%",
           }}
         >
@@ -324,7 +337,11 @@ function Header() {
             backgroundColor: "#fff",
             position: "fixed",
             zIndex: "2",
-            top: scroll < 600 && pathname == "/category" ? "90px" : "75px",
+            top:
+              scroll < 600 &&
+              (pathname == "/category" || pathname == "/product")
+                ? "90px"
+                : "75px",
             left: "42%",
             borderBottomRightRadius: "8px",
           }}
