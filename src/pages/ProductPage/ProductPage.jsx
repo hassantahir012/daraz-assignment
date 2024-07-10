@@ -20,7 +20,7 @@ function ProductPage() {
       >
         <BreadCrumbs />
         <ProductDetails />
-        <Grid container mt={1.25} spacing={1.25}>
+        <Grid container mt={1.25} spacing={1.25} marginTop={0}>
           <Grid item xs={12} xl={9.996}>
             <Ratings />
             <Specifications />
