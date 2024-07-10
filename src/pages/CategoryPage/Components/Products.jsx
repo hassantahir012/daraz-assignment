@@ -1,6 +1,7 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { Grid } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Products() {
   const products = [
@@ -329,7 +330,7 @@ function Products() {
     <Grid container spacing={2}>
       {products.map((product) => (
         <Grid item xs={12} sm={6} md={4} lg={3}>
-          <a className="product-card--vHfY9">
+          <Link to="/product" className="product-card--vHfY9">
             <div className="image-wrapper--ydch1">
               <img src={product.image} alt="" className="image--Smuib" />
             </div>
@@ -373,7 +374,7 @@ function Products() {
                 </div>
               </div>
             </div>
-          </a>
+          </Link>
         </Grid>
       ))}
     </Grid>
