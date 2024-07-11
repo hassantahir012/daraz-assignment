@@ -98,25 +98,6 @@ function FlashSales() {
             </Grid>
           ))}
         </Grid>
-        {/* <div className="row gap-0 column-gap-2 row-gap-2">
-          {products.map((product) => (
-            <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 card">
-              <div className="mb-1">
-                <img src={product.image} alt="" width="100%" />
-              </div>
-              <div style={{ margin: "0 8px" }}>
-                <div className="card-title">{product.title}</div>
-                <div className="card-price">Rs.{product.price}</div>
-                <div className="origional-price-card">
-                  <span className="origional-price">
-                    Rs.{product.oigional_price}
-                  </span>
-                  <span className="discount">-{product.discount}%</span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div> */}
       </div>
     </div>
   );

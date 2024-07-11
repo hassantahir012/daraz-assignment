@@ -577,22 +577,6 @@ function Ratings() {
                 <span className="review-count">(1)</span>
               </div>
             </div>
-            {/* <div className="review-filter-other">
-              <div className="sort-by-filter">
-                <img
-                  alt=""
-                  className="sort-by-icon"
-                  src="https://img.alicdn.com/imgextra/i3/O1CN01hRfIB61cpkXHWApHD_!!6000000003650-2-tps-40-40.png"
-                />
-                Sort By:
-                <div
-                  className="ant-select ant-select-borderless select-wrapper css-1a1h1d3 ant-select-single ant-select-show-arrow"
-                  style={{
-                    width: "120px",
-                  }}
-                ></div>
-              </div>
-            </div> */}
           </div>
         </div>
         <div
