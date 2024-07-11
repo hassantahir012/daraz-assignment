@@ -9,6 +9,10 @@ body {
   position: relative;
   letter-spacing: normal !important;
 }
+
+a:focus {
+  outline: none;
+}
 .homepage-body {
   background-color: #f5f5f5 !important;
 }
@@ -423,8 +427,15 @@ a {
   -webkit-box-orient: vertical;
   font-size: 13px;
 }
+.banner-slider {
+  margin-top: -3px;
+  border-radius: 12px;
+}
+.banner-slider:focus {
+  outline: none;
+}
 .banner-slider img {
-  border-radius: 15px;
+  border-radius: 12px;
   width: 100%;
 }
 
@@ -432,29 +443,30 @@ a {
   position: absolute;
   left: 0;
   z-index: 1;
-  top: 45%;
+  top: 43%;
 }
 
 .banner-slider .slick-next {
   position: absolute;
   right: 0;
   z-index: 1;
-  top: 45%;
+  top: 43%;
+  margin-right: 3px;
 }
 
 .banner-slider .slick-prev svg {
-  width: 20px;
+  width: 23px;
   height: 20px;
   color: #fff;
-  background-color: #0000006b;
-  padding: 15px 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 22px 0px;
 }
 .banner-slider .slick-next svg {
-  width: 20px;
+  width: 23px;
   height: 20px;
   color: #fff;
   background-color: #0000006b;
-  padding: 15px 0;
+  padding: 22px 0px;
 }
 
 .banner-slider .slick-prev:before {

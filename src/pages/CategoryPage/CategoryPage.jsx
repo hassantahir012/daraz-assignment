@@ -1,6 +1,5 @@
 import React from "react";
 import "./style/style.css";
-import Header from "../../components/Header";
 import BreadCrumbs from "./Components/BreadCrumbs";
 import PageContent from "./Components/PageContent";
 import MessageBox from "../../components/MessageBox";
@@ -9,7 +8,6 @@ import CompanyLinks from "../../components/CompanyLinks";
 function CategoryPage() {
   return (
     <>
-      <Header />
       <div
         className="custom-container custom-container-body"
         style={{ width: "89%" }}

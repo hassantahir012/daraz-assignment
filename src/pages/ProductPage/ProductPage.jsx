@@ -13,7 +13,6 @@ import Specifications from "./components/Specifications";
 function ProductPage() {
   return (
     <div style={{ backgroundColor: "#EFF0F5" }}>
-      <Header />
       <div
         className="custom-container custom-container-body"
         style={{ paddingTop: "6.6%", paddingBottom: "20px" }}

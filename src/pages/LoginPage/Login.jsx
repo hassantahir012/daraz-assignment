@@ -21,56 +21,53 @@ function Login() {
   }, [pathname]);
   return (
     <div style={{ backgroundColor: "#EFF0F5" }}>
-      <div>
-        <Header />
+      <div
+        // className="custom-container-body"
+        style={{
+          maxWidth: "810px",
+          margin: "auto",
+          paddingTop: "6.7%",
+          backgroundColor: "#EFF0F5",
+        }}
+      >
         <div
-          // className="custom-container-body"
+          className="login-title d-flex justify-content-between flex-wrap"
           style={{
-            maxWidth: "810px",
-            margin: "auto",
-            paddingTop: "6.7%",
-            backgroundColor: "#EFF0F5",
+            margin: "50px 0 15px",
+            height: "26px",
+            lineHeight: "26px",
           }}
         >
-          <div
-            className="login-title d-flex justify-content-between flex-wrap"
-            style={{
-              margin: "50px 0 15px",
-              height: "26px",
-              lineHeight: "26px",
-            }}
-          >
-            <h3>
-              {pathname == "/login"
-                ? "Welcome to Daraz! Please login."
-                : "Create your Daraz Account"}
-            </h3>
-            <div className="login-other">
-              {pathname == "/login" ? (
-                <span>
-                  New member? <Link to="/register">Register</Link> here.
-                </span>
-              ) : (
-                <span>
-                  Already member? <Link to="/login">Login</Link> here.
-                </span>
-              )}
-            </div>
-          </div>
-          <div>
-            {pathname == "/login" && (
-              <LoginForm
-                showPassword={showPassword}
-                setShowPassword={setShowPassword}
-              />
-            )}
-            {pathname == "/register" && (
-              <RegisterForm
-                showPassword={showPassword}
-                setShowPassword={setShowPassword}
-              />
+          <h3>
+            {pathname == "/login"
+              ? "Welcome to Daraz! Please login."
+              : "Create your Daraz Account"}
+          </h3>
+          <div className="login-other">
+            {pathname == "/login" ? (
+              <span>
+                New member? <Link to="/register">Register</Link> here.
+              </span>
+            ) : (
+              <span>
+                Already member? <Link to="/login">Login</Link> here.
+              </span>
             )}
           </div>
+        </div>
+        <div>
+          {pathname == "/login" && (
+            <LoginForm
+              showPassword={showPassword}
+              setShowPassword={setShowPassword}
+            />
+          )}
+          {pathname == "/register" && (
+            <RegisterForm
+              showPassword={showPassword}
+              setShowPassword={setShowPassword}
+            />
+          )}
         </div>
       </div>
       <MessageBox />

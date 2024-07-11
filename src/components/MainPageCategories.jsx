@@ -48,7 +48,7 @@ function MainPageCategories() {
                     src={category.image}
                     height={80}
                     width={80}
-                    className="mt-2"
+                    className="mt-3"
                   />
                 </div>
                 <div className="d-flex justify-content-center text-center category-name">
