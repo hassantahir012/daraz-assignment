@@ -17,7 +17,6 @@ function HomePage() {
         <CompanyLinks />
       </div>
       <Footer />
-      <MessageBox />
     </div>
   );
 }

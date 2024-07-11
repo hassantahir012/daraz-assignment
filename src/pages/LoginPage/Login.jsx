@@ -70,7 +70,6 @@ function Login() {
           )}
         </div>
       </div>
-      <MessageBox />
       <div style={{ backgroundColor: "#F5F5F5" }} className="w-100">
         <div style={{ width: "88%", margin: "auto" }}>
           <CompanyLinks />

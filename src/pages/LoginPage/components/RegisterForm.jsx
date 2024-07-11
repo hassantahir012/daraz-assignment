@@ -96,7 +96,7 @@ function RegisterForm({ showPassword, setShowPassword }) {
       navigate("/login");
     } catch (error) {
       enqueueSnackbar(error.message, { variant: "error" });
-      console.log(error, " catched while creating a user");
+      console.log(error, " catched while creating a user", error.code);
     } finally {
       setLoading(false);
     }

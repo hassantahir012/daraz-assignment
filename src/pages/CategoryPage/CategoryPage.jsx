@@ -15,7 +15,6 @@ function CategoryPage() {
         <BreadCrumbs />
         <PageContent />
       </div>
-      <MessageBox />
       <div style={{ backgroundColor: "#F5F5F5" }} className="w-100">
         <div style={{ width: "89%", margin: "auto" }}>
           <CompanyLinks />

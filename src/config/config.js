@@ -1,5 +1,5 @@
 export const firebase_api_key = process.env.REACT_APP_FIREBASE_API_KEY;
-export const firebase_auth_domain = process.envREACT_APP_FIREBASE_.AUTH_DOMAIN;
+export const firebase_auth_domain = process.env.REACT_APP_FIREBASE_AUTH_DOMAIN;
 export const firebase_project_id = process.env.REACT_APP_FIREBASE_PROJECT_ID;
 export const firebase_storage_bucket =
   process.env.REACT_APP_FIREBASE_STORAGE_BUCKET;
