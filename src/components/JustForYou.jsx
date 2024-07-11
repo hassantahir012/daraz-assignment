@@ -2,154 +2,10 @@ import { Grid, Rating } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase_config";
+import { useNavigate } from "react-router-dom";
 function JustForYou() {
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
-  // const products = [
-  //   {
-  //     image:
-  //       "https://static-01.daraz.pk/p/5a0a89946497d5f4a344c675b2d6680b.jpg_200x200q80-product.jpg_.webp",
-  //     title:
-  //       "Mister Traders Brand Wooden Key Holder I Key Holder Wall I Key Holder For Wall I Key Holder Wall Hanger I Key Holder Wall Hanging I Key Holders I Home Design Key Holder I Decorating items I Decorating items for home I Decoration Pieces",
-  //     price: "98",
-  //     origional_price: "500",
-  //     discount: "80",
-  //     rating: 4.4,
-  //     rating_count: "420",
-  //     is_daraz_mall: false,
-  //   },
-  //   {
-  //     image:
-  //       "https://static-01.daraz.pk/p/5a0a89946497d5f4a344c675b2d6680b.jpg_200x200q80-product.jpg_.webp",
-  //     title:
-  //       "Mister Traders Brand Wooden Key Holder I Key Holder Wall I Key Holder For Wall I Key Holder Wall Hanger I Key Holder Wall Hanging I Key Holders I Home Design Key Holder I Decorating items I Decorating items for home I Decoration Pieces",
-  //     price: "98",
-  //     origional_price: "500",
-  //     discount: "80",
-  //     rating: 3,
-  //     rating_count: "420",
-  //     is_daraz_mall: true,
-  //   },
-  //   {
-  //     image:
-  //       "https://static-01.daraz.pk/p/5a0a89946497d5f4a344c675b2d6680b.jpg_200x200q80-product.jpg_.webp",
-  //     title:
-  //       "Mister Traders Brand Wooden Key Holder I Key Holder Wall I Key Holder For Wall I Key Holder Wall Hanger I Key Holder Wall Hanging I Key Holders I Home Design Key Holder I Decorating items I Decorating items for home I Decoration Pieces",
-  //     price: "98",
-  //     origional_price: "500",
-  //     discount: "80",
-  //     rating: 4.5,
-  //     rating_count: "420",
-  //     is_daraz_mall: false,
-  //   },
-  //   {
-  //     image:
-  //       "https://static-01.daraz.pk/p/5a0a89946497d5f4a344c675b2d6680b.jpg_200x200q80-product.jpg_.webp",
-  //     title:
-  //       "Mister Traders Brand Wooden Key Holder I Key Holder Wall I Key Holder For Wall I Key Holder Wall Hanger I Key Holder Wall Hanging I Key Holders I Home Design Key Holder I Decorating items I Decorating items for home I Decoration Pieces",
-  //     price: "98",
-  //     origional_price: "500",
-  //     discount: "80",
-  //     rating: 4.5,
-  //     rating_count: "420",
-  //     is_daraz_mall: false,
-  //   },
-  //   {
-  //     image:
-  //       "https://static-01.daraz.pk/p/5a0a89946497d5f4a344c675b2d6680b.jpg_200x200q80-product.jpg_.webp",
-  //     title:
-  //       "Mister Traders Brand Wooden Key Holder I Key Holder Wall I Key Holder For Wall I Key Holder Wall Hanger I Key Holder Wall Hanging I Key Holders I Home Design Key Holder I Decorating items I Decorating items for home I Decoration Pieces",
-  //     price: "98",
-  //     origional_price: "500",
-  //     discount: "80",
-  //     rating: 3,
-  //     rating_count: "420",
-  //     is_daraz_mall: true,
-  //   },
-  //   {
-  //     image:
-  //       "https://static-01.daraz.pk/p/5a0a89946497d5f4a344c675b2d6680b.jpg_200x200q80-product.jpg_.webp",
-  //     title:
-  //       "Mister Traders Brand Wooden Key Holder I Key Holder Wall I Key Holder For Wall I Key Holder Wall Hanger I Key Holder Wall Hanging I Key Holders I Home Design Key Holder I Decorating items I Decorating items for home I Decoration Pieces",
-  //     price: "98",
-  //     origional_price: "500",
-  //     discount: "80",
-  //     rating: 4.5,
-  //     rating_count: "420",
-  //     is_daraz_mall: false,
-  //   },
-  //   {
-  //     image:
-  //       "https://static-01.daraz.pk/p/5a0a89946497d5f4a344c675b2d6680b.jpg_200x200q80-product.jpg_.webp",
-  //     title:
-  //       "Mister Traders Brand Wooden Key Holder I Key Holder Wall I Key Holder For Wall I Key Holder Wall Hanger I Key Holder Wall Hanging I Key Holders I Home Design Key Holder I Decorating items I Decorating items for home I Decoration Pieces",
-  //     price: "98",
-  //     origional_price: "500",
-  //     discount: "80",
-  //     rating: 4.5,
-  //     rating_count: "420",
-  //     is_daraz_mall: false,
-  //   },
-  //   {
-  //     image:
-  //       "https://static-01.daraz.pk/p/5a0a89946497d5f4a344c675b2d6680b.jpg_200x200q80-product.jpg_.webp",
-  //     title:
-  //       "Mister Traders Brand Wooden Key Holder I Key Holder Wall I Key Holder For Wall I Key Holder Wall Hanger I Key Holder Wall Hanging I Key Holders I Home Design Key Holder I Decorating items I Decorating items for home I Decoration Pieces",
-  //     price: "98",
-  //     origional_price: "500",
-  //     discount: "80",
-  //     rating: 3,
-  //     rating_count: "420",
-  //     is_daraz_mall: true,
-  //   },
-  //   {
-  //     image:
-  //       "https://static-01.daraz.pk/p/5a0a89946497d5f4a344c675b2d6680b.jpg_200x200q80-product.jpg_.webp",
-  //     title:
-  //       "Mister Traders Brand Wooden Key Holder I Key Holder Wall I Key Holder For Wall I Key Holder Wall Hanger I Key Holder Wall Hanging I Key Holders I Home Design Key Holder I Decorating items I Decorating items for home I Decoration Pieces",
-  //     price: "98",
-  //     origional_price: "500",
-  //     discount: "80",
-  //     rating: 4.5,
-  //     rating_count: "420",
-  //     is_daraz_mall: false,
-  //   },
-  //   {
-  //     image:
-  //       "https://static-01.daraz.pk/p/5a0a89946497d5f4a344c675b2d6680b.jpg_200x200q80-product.jpg_.webp",
-  //     title:
-  //       "Mister Traders Brand Wooden Key Holder I Key Holder Wall I Key Holder For Wall I Key Holder Wall Hanger I Key Holder Wall Hanging I Key Holders I Home Design Key Holder I Decorating items I Decorating items for home I Decoration Pieces",
-  //     price: "98",
-  //     origional_price: "500",
-  //     discount: "80",
-  //     rating: 4.5,
-  //     rating_count: "420",
-  //     is_daraz_mall: false,
-  //   },
-  //   {
-  //     image:
-  //       "https://static-01.daraz.pk/p/5a0a89946497d5f4a344c675b2d6680b.jpg_200x200q80-product.jpg_.webp",
-  //     title:
-  //       "Mister Traders Brand Wooden Key Holder I Key Holder Wall I Key Holder For Wall I Key Holder Wall Hanger I Key Holder Wall Hanging I Key Holders I Home Design Key Holder I Decorating items I Decorating items for home I Decoration Pieces",
-  //     price: "98",
-  //     origional_price: "500",
-  //     discount: "80",
-  //     rating: 3,
-  //     rating_count: "420",
-  //     is_daraz_mall: true,
-  //   },
-  //   {
-  //     image:
-  //       "https://static-01.daraz.pk/p/5a0a89946497d5f4a344c675b2d6680b.jpg_200x200q80-product.jpg_.webp",
-  //     title:
-  //       "Mister Traders Brand Wooden Key Holder I Key Holder Wall I Key Holder For Wall I Key Holder Wall Hanger I Key Holder Wall Hanging I Key Holders I Home Design Key Holder I Decorating items I Decorating items for home I Decoration Pieces",
-  //     price: "98",
-  //     origional_price: "500",
-  //     discount: "80",
-  //     rating: 4.5,
-  //     rating_count: "420",
-  //     is_daraz_mall: false,
-  //   },
-  // ];
   const getProducts = async () => {
     const result = await getDocs(collection(db, "just_for_you"));
     setProducts(result.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
@@ -166,7 +22,10 @@ function JustForYou() {
         <Grid container columnSpacing={1} rowSpacing={2}>
           {products.map((product) => (
             <Grid item xs={12} sm={6} md={3} lg={2} key={product.id}>
-              <div className="custom-card p-0">
+              <div
+                className="custom-card p-0"
+                onClick={() => navigate("/product")}
+              >
                 <div>
                   <img src={product.image} width="100%" />
                 </div>
@@ -214,7 +73,9 @@ function JustForYou() {
         <div
           className="d-flex justify-content-center"
           style={{
-            margin: "20px 0 9px 0",
+            marginTop: "20px",
+            paddingTop: "20px",
+            paddingBottom: "9px",
           }}
         >
           <a href="" className="load-more-button">

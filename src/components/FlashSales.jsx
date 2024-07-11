@@ -2,7 +2,9 @@ import { Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase_config";
+import { useNavigate } from "react-router-dom";
 function FlashSales() {
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [time, setTime] = useState(
     localStorage.getItem("time")
@@ -76,7 +78,7 @@ function FlashSales() {
         <Grid container spacing={2}>
           {products.map((product) => (
             <Grid item xs={12} sm={6} md={3} lg={2} key={product.id}>
-              <div className="custom-card">
+              <div className="custom-card" onClick={() => navigate("/product")}>
                 <div className="mb-1">
                   <img src={product.image} alt="" width="100%" />
                 </div>

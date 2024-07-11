@@ -100,7 +100,7 @@ const Banner = () => {
                   <span className="category-icon">
                     <i className="fa-solid fa-notes-medical"></i>
                   </span>
-                  <span>Health & Beauty</span>
+                  <span className="banner-category-title">Health & Beauty</span>
                 </li>
                 <li>
                   <span className="category-icon">

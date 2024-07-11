@@ -5,12 +5,12 @@ import { useLocation } from "react-router-dom";
 function CompanyLinks() {
   const { pathname } = useLocation();
   return (
-    <section className="desktop-footer">
+    <section className="desktop-footer" style={{ lineHeight: 1.5 }}>
       <div style={{ padding: "22px 0 30px" }} className="footer-first">
         <div className="row">
           <div className="col-md-3 col-sm-4 col-xs-6">
             <h3
-              className="footer-title footer-title-first"
+              className="footer-title footer-title-first mt-0"
               style={{ marginTop: pathname !== "/" ? 0 : "" }}
             >
               Customer Care
@@ -59,7 +59,7 @@ function CompanyLinks() {
             style={{ paddingLeft: "21px" }}
           >
             <h3
-              className="footer-title footer-title-first"
+              className="footer-title footer-title-first mt-0"
               style={{ marginTop: pathname !== "/" ? 0 : "" }}
             >
               Daraz
@@ -105,7 +105,7 @@ function CompanyLinks() {
             style={{ paddingLeft: "31px" }}
           >
             <h3
-              className="footer-title footer-title-first"
+              className="footer-title footer-title-first mt-0"
               style={{ marginTop: pathname !== "/" ? 0 : "" }}
             >
               Daraz International
@@ -180,59 +180,6 @@ function CompanyLinks() {
                 <span className=" drz-footer-sprit-link drz-footer-sprit icon-yatra-payment-13"></span>
               </span>
             </div>
-            {/* <div className="payment-methods">
-              <span className="payment">
-                <span style={{ height: "100%", width: "100%" }}></span>
-              </span>
-              <span className="payment">
-                <span
-                  style={{ height: "100%", width: "100%" }}
-                  className="payment-method method-1"
-                ></span>
-              </span>
-              <span className="payment">
-                <span
-                  style={{ height: "100%", width: "100%" }}
-                  className="payment-method method-2"
-                ></span>
-              </span>
-              <span className="payment">
-                <span
-                  style={{ height: "100%", width: "100%" }}
-                  className="payment-method method-3"
-                ></span>
-              </span>
-              <span className="payment">
-                <span
-                  style={{ height: "100%", width: "100%" }}
-                  className="payment-method method-4"
-                ></span>
-              </span>
-              <span className="payment">
-                <span
-                  style={{ height: "100%", width: "100%" }}
-                  className="payment-method method-5"
-                ></span>
-              </span>
-              <span className="payment">
-                <span
-                  style={{ height: "100%", width: "100%" }}
-                  className="payment-method method-6"
-                ></span>
-              </span>
-              <span className="payment">
-                <span
-                  style={{ height: "100%", width: "100%" }}
-                  className="payment-method method-7"
-                ></span>
-              </span>
-              <span className="payment">
-                <span
-                  style={{ height: "100%", width: "100%" }}
-                  className="payment-method method-8"
-                ></span>
-              </span>
-            </div> */}
             <h3 className="footer-title">Verified by</h3>
             <div className="verified-by">
               <span className="icon-yatra-pci drz-footer-sprit-link"></span>
@@ -243,7 +190,7 @@ function CompanyLinks() {
             style={{ paddingLeft: "40px" }}
           >
             <h3
-              className="footer-title footer-title-first"
+              className="footer-title footer-title-first mt-0"
               style={{ marginTop: pathname !== "/" ? 0 : "" }}
             >
               Exclusive Deals and Offers!

@@ -422,23 +422,23 @@ function Header() {
               {scroll < 600 && (
                 <div className="d-flex align-items-center justify-content-between">
                   <div className="d-flex" style={{ gap: "1.55rem" }}>
-                    <a href="" style={{ marginTop: "-5px" }}>
+                    <a href="" style={{ marginTop: "-2px" }}>
                       Become a Seller
                     </a>
-                    <a href="" style={{ marginTop: "-5px" }}>
+                    <a href="" style={{ marginTop: "-2px" }}>
                       Daraz Affiliate Program
                     </a>
-                    <a href="" style={{ marginTop: "-5px" }}>
+                    <a href="" style={{ marginTop: "-2px" }}>
                       Help & Support
                     </a>
-                    <a href="" style={{ marginTop: "-5px" }}>
+                    <a href="" style={{ marginTop: "-2px" }}>
                       Daraz Logistics Partner
                     </a>
                   </div>
                   <div
                     className="app-button-header ps-1"
                     style={{
-                      paddingBottom: "0.25em",
+                      paddingBottom: "0.4em",
                       paddingTop: "0.3em",
                       paddingRight: "0.48rem",
                     }}
@@ -454,7 +454,7 @@ function Header() {
                       <div
                         style={{
                           marginBottom: "0.05em",
-                          marginTop: "0.1em",
+                          marginTop: "0.29em",
                           paddingLeft: "0.2em",
                         }}
                       >
@@ -484,17 +484,37 @@ function Header() {
                   alignItems={"center"}
                   width={"100%"}
                   sx={{
-                    marginLeft: pathname !== "/" ? "0.5rem" : "1.2rem",
+                    // marginLeft: "0.5rem",
+                    marginLeft:
+                      pathname !== "/" || scroll >= 600 ? "0.5rem" : "1.2rem",
                     marginTop: "2px",
                   }}
                 >
                   {(scroll >= 600 || pathname !== "/") && (
-                    <div className="categories-button d-flex align-items-center">
+                    <div
+                      className="categories-button d-flex align-items-center"
+                      style={{
+                        padding:
+                          pathname == "/"
+                            ? "9px 12px 8px 9px"
+                            : "7px 7px 8px 14px",
+                      }}
+                    >
                       Categories{" "}
                       {displayCategories.cat1 ? (
-                        <span className="tabler--chevron-up"></span>
+                        <span
+                          className="tabler--chevron-up"
+                          style={{
+                            marginLeft: pathname == "/" ? "4px" : "4px",
+                          }}
+                        ></span>
                       ) : (
-                        <span className="tabler--chevron-down"></span>
+                        <span
+                          className="tabler--chevron-down"
+                          style={{
+                            marginLeft: pathname == "/" ? "4px" : "4px",
+                          }}
+                        ></span>
                       )}
                     </div>
                   )}
@@ -613,7 +633,7 @@ function Header() {
                       // fontWeight: 500,
                       // fontSize: "20px",
                       // height: "38px",
-                      marginLeft: "8px",
+                      marginLeft: 0,
                     }}
                   >
                     <span className="ep--shopping-cart"></span>
