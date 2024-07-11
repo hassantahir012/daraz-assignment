@@ -196,6 +196,7 @@ a {
   line-height: 18px;
   height: 36px;
   display: -webkit-box;
+  line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -302,6 +303,7 @@ a {
   line-height: 18px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  line-clamp: 2;
   -webkit-line-clamp: 2;
   overflow: hidden;
   margin-bottom: 4px;
@@ -413,6 +415,7 @@ a {
   margin-right: 7px;
 }
 .banner-category-title {
+  line-clamp: 1;
   -webkit-line-clamp: 1;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -923,6 +926,7 @@ a {
   cursor: pointer;
 }
 button {
+  appearance: button;
   -webkit-appearance: button;
   text-transform: none;
   line-height: 1.15;
