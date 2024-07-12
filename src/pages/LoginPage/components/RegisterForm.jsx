@@ -85,6 +85,9 @@ function RegisterForm({ showPassword, setShowPassword }) {
         inputs.email,
         inputs.password
       );
+      // .then((resp) => console.log(resp, "asjhcasjklhacs --resp"))
+      // .catch((err) => console.log({ ...err }, "asjhcasjklhacs --err"))
+      // .finally(() => setLoading(false));
       const user = userCredential.user;
       await setDoc(doc(db, "users", user.uid), {
         whatsapp_verification_code: inputs.whatsapp_verification_code,
@@ -95,8 +98,10 @@ function RegisterForm({ showPassword, setShowPassword }) {
       enqueueSnackbar("Registration Successfull", { variant: "success" });
       navigate("/login");
     } catch (error) {
-      enqueueSnackbar(error.message, { variant: "error" });
-      console.log(error, " catched while creating a user", error.code);
+      enqueueSnackbar(error.customData._tokenResponse.error.message, {
+        variant: "error",
+      });
+      console.log({ ...error }, " catched while creating a user");
     } finally {
       setLoading(false);
     }
@@ -109,7 +114,7 @@ function RegisterForm({ showPassword, setShowPassword }) {
   }, [width]);
   return (
     <form action="" onSubmit={handleSubmit}>
-      <div className="mod-login">
+      <div className="mod-login mb-0">
         <Grid container spacing={2}>
           <Grid item xs={12} md={6.34}>
             <div className="mod-input mod-login-input-loginName mod-input-loginName">

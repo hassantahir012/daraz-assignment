@@ -127,13 +127,13 @@ function CompanyLinks() {
                 <span className="country-flag">
                   <span className="inner-country-flag lk-flag"></span>
                 </span>
-                <span className="country-name">Srilanka</span>
+                <span className="country-name">Sri Lanka</span>
               </a>
               <a href="" className="footer-country">
                 <span className="country-flag">
                   <span className="inner-country-flag mm-flag"></span>
                 </span>
-                <span className="country-name">Mayanmar</span>
+                <span className="country-name">Myanmar</span>
               </a>
               <a href="" className="footer-country">
                 <span className="country-flag">

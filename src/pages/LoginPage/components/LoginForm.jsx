@@ -58,8 +58,8 @@ function LoginForm({ showPassword, setShowPassword }) {
       enqueueSnackbar("Login Successfull", { variant: "success" });
       navigate("/");
     } catch (error) {
-      enqueueSnackbar(error.message, { variant: "error" });
-      console.log(error, " catched while loging in");
+      enqueueSnackbar(error.code, { variant: "error" });
+      console.log({ ...error }, " catched while loging in");
     } finally {
       setLoading();
     }
