@@ -1,13 +1,13 @@
 import { Grid, Rating } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebase_config";
 import { useNavigate } from "react-router-dom";
+import Service from "../services/service";
+import { productPagePath } from "../constants";
 function JustForYou() {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const getProducts = async () => {
-    const result = await getDocs(collection(db, "just_for_you"));
+    const result = await Service.getJustForYouProducts();
     setProducts(result.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
   useEffect(() => {
@@ -24,7 +24,7 @@ function JustForYou() {
             <Grid item xs={12} sm={6} md={3} lg={2} key={product.id}>
               <div
                 className="custom-card p-0"
-                onClick={() => navigate("/product")}
+                onClick={() => navigate(productPagePath)}
               >
                 <div>
                   <img src={product.image} width="100%" />

@@ -5,8 +5,15 @@ import React, { useState } from "react";
 import { auth } from "../../../firebase_config";
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
+import { homePagePath } from "../../../constants";
+import FacebookButton from "./FacebookButton";
+import GoogleButton from "./GoogleButton";
+import { validateEmail, validatePasswordForLogin } from "../functions";
+import { login } from "../../../slices/authSlice";
+import { useDispatch } from "react-redux";
 
 function LoginForm({ showPassword, setShowPassword }) {
+  const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
@@ -54,9 +61,16 @@ function LoginForm({ showPassword, setShowPassword }) {
     if (err) return;
     setLoading(true);
     try {
-      await signInWithEmailAndPassword(auth, inputs.email, inputs.password);
+      const result = await signInWithEmailAndPassword(
+        auth,
+        inputs.email,
+        inputs.password
+      );
+      dispatch(login());
+      localStorage.setItem("user", JSON.stringify(result.user));
+      localStorage.setItem("token", result.user.accessToken);
       enqueueSnackbar("Login Successfull", { variant: "success" });
-      navigate("/");
+      navigate(homePagePath);
     } catch (error) {
       enqueueSnackbar(error.code, { variant: "error" });
       console.log({ ...error }, " catched while loging in");
@@ -79,36 +93,11 @@ function LoginForm({ showPassword, setShowPassword }) {
                 name="email"
                 value={inputs.email}
                 onChange={(e) => {
-                  if (e.target.value === "") {
-                    setErrors((prev) => ({
-                      ...prev,
-                      email_error: true,
-                      email_error_message: "You can't leave this empty.",
-                    }));
-                  } else if (
-                    e.target.value.length < 6 ||
-                    e.target.value.length > 60
-                  ) {
-                    setErrors((prev) => ({
-                      ...prev,
-                      email_error: true,
-                      email_error_message:
-                        "The length of the Email should be 6-60 characters.",
-                    }));
-                  } else {
-                    setErrors((prev) => ({
-                      ...prev,
-                      email_error: false,
-                      email_error_message: "",
-                    }));
-                  }
-                  handleChangeInputs(e);
+                  validateEmail(e, setErrors, handleChangeInputs);
                 }}
-                style={{
-                  border: errors.email_error ? "1px solid #f44336" : "",
-                }}
+                className={errors.email_error ? "error-input-field" : ""}
               />
-              <span style={{ visibility: errors.email_error ? "visible" : "" }}>
+              <span className={errors.email_error ? "visible" : ""}>
                 {errors.email_error_message}
               </span>
             </div>
@@ -121,57 +110,40 @@ function LoginForm({ showPassword, setShowPassword }) {
                 defaultValue=""
                 name="password"
                 value={inputs.password}
-                onChange={(e) => {
-                  if (e.target.value === "") {
-                    setErrors((prev) => ({
-                      ...prev,
-                      password_error: true,
-                      password_error_message: "You can't leave this empty.",
-                    }));
-                  } else {
-                    setErrors((prev) => ({
-                      ...prev,
-                      password_error: false,
-                      password_error_message: "",
-                    }));
-                  }
-                  handleChangeInputs(e);
-                }}
-                style={{
-                  border: errors.password_error ? "1px solid #f44336" : "",
-                }}
+                onChange={(e) =>
+                  validatePasswordForLogin(e, setErrors, handleChangeInputs)
+                }
+                className={errors.password_error ? "error-input-field" : ""}
               />
-              <span
-                style={{ visibility: errors.password_error ? "visible" : "" }}
-              >
+              <span className={errors.password_error ? "visible" : ""}>
                 {errors.password_error_message}
               </span>
               <div className="mod-input-password-icon">
                 {!showPassword && (
                   <Icon
                     icon="tabler:eye-closed"
-                    style={{ color: "#b8b8b8" }}
+                    className="color-b8b8b8"
                     onClick={() => setShowPassword((prev) => !prev)}
                   />
                 )}
                 {showPassword && (
                   <Icon
                     icon="radix-icons:eye-open"
-                    style={{ color: "#b8b8b8" }}
+                    className="color-b8b8b8"
                     onClick={() => setShowPassword((prev) => !prev)}
                   />
                 )}
               </div>
             </div>
             <div className="mod-login-forgot">
-              <a href="/">Reset Your Password</a>
+              <a href={homePagePath}>Reset Your Password</a>
             </div>
           </Grid>
           <Grid item xs={12} md={5.66}>
             <div
               className={"d-flex justify-content-center justify-content-md-end"}
             >
-              <div style={{ width: "305px" }}>
+              <div className="auth-form">
                 <div className="mod-login-btn">
                   <button
                     type="submit"
@@ -184,35 +156,11 @@ function LoginForm({ showPassword, setShowPassword }) {
                 <div className="mod-login-third">
                   <div className="mod-third-party-login mod-login-third-btns">
                     <div className="mod-third-party-login-line">
-                      <span style={{ color: "#999" }}>Or, login with</span>
+                      <span className="color-999">Or, login with</span>
                     </div>
                     <div className="mod-third-party-login-bd">
-                      <button className="mod-button mod-third-party-login-btn mod-third-party-login-fb">
-                        <Icon
-                          icon="uim:facebook-f"
-                          style={{
-                            color: "white",
-                            height: "1.2rem",
-                            width: "1.2rem",
-                            marginRight: "14px",
-                            marginTop: "-5px",
-                          }}
-                        />{" "}
-                        Facebook
-                      </button>
-                      <button className="mod-button mod-third-party-login-btn mod-third-party-login-google">
-                        <Icon
-                          icon="jam:google-plus"
-                          style={{
-                            color: "white",
-                            height: "2rem",
-                            width: "2rem",
-                            marginRight: "14px",
-                            marginTop: "-5px",
-                          }}
-                        />{" "}
-                        Google
-                      </button>
+                      <FacebookButton />
+                      <GoogleButton />
                     </div>
                   </div>
                 </div>

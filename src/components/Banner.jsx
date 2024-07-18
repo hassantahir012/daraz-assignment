@@ -6,6 +6,7 @@ import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Grid, Stack } from "@mui/material";
+import CategoryUnorderedList from "./CategoryUnorderedList";
 
 const Banner = () => {
   const features = [
@@ -43,11 +44,7 @@ const Banner = () => {
   const PrevArrow = (props) => {
     const { className, style, onClick } = props;
     return (
-      <div
-        className={className}
-        style={{ ...style, display: "block" }}
-        onClick={onClick}
-      >
+      <div className={className} style={{ ...style }} onClick={onClick}>
         <FontAwesomeIcon icon={faAngleRight} />
       </div>
     );
@@ -56,11 +53,7 @@ const Banner = () => {
   const NextArrow = (props) => {
     const { className, style, onClick } = props;
     return (
-      <div
-        className={className}
-        style={{ ...style, display: "block" }}
-        onClick={onClick}
-      >
+      <div className={className} style={{ ...style }} onClick={onClick}>
         <FontAwesomeIcon icon={faAngleLeft} />
       </div>
     );
@@ -74,8 +67,8 @@ const Banner = () => {
     slidesToShow: 1,
     dotsClass: "slick-dots custom-dots",
     slidesToScroll: 1,
-    nextArrow: <PrevArrow />,
-    prevArrow: <NextArrow />,
+    nextArrow: <PrevArrow className="d-block" />,
+    prevArrow: <NextArrow className="d-block" />,
   };
 
   return (
@@ -84,99 +77,10 @@ const Banner = () => {
         <Grid container spacing={2} mb={2}>
           <Grid item xs={12} md={2.53}>
             <div className="custom-shadow-card">
-              <ul
+              <CategoryUnorderedList
                 className="list-unstyled category-list mb-0 pt-2"
                 style={{ paddingBottom: "6px" }}
-              >
-                <li>
-                  <span className="category-icon">
-                    <i className="fa-solid fa-basket-shopping"></i>
-                  </span>
-                  <span className="banner-category-title">
-                    Groceries & Pets
-                  </span>
-                </li>
-                <li>
-                  <span className="category-icon">
-                    <i className="fa-solid fa-notes-medical"></i>
-                  </span>
-                  <span className="banner-category-title">Health & Beauty</span>
-                </li>
-                <li>
-                  <span className="category-icon">
-                    <i className="fa-solid fa-shirt"></i>
-                  </span>
-                  <span className="banner-category-title">Men's Fashion</span>
-                </li>
-                <li>
-                  <span className="category-icon">
-                    <i className="fa-solid fa-shirt"></i>
-                  </span>
-                  <span className="banner-category-title">Women's Fashion</span>
-                </li>
-                <li>
-                  <span className="category-icon">
-                    <i className="fa-solid fa-children"></i>
-                  </span>
-                  <span className="banner-category-title">Mother & Baby</span>
-                </li>
-                <li>
-                  <span className="category-icon">
-                    <i className="fa-solid fa-couch"></i>
-                  </span>
-                  <span className="banner-category-title">
-                    Home & Lifestyle
-                  </span>
-                </li>
-                <li>
-                  <span className="category-icon">
-                    <i className="fa-solid fa-laptop"></i>
-                  </span>
-                  <span className="banner-category-title">
-                    Electronic Devices
-                  </span>
-                </li>
-                <li>
-                  <span className="category-icon">
-                    <i className="fa-solid fa-computer-mouse"></i>
-                  </span>
-                  <span className="banner-category-title">
-                    Electronic Accessories
-                  </span>
-                </li>
-                <li>
-                  <span className="category-icon">
-                    <i className="fa-solid fa-tv"></i>
-                  </span>
-                  <span className="banner-category-title">
-                    TV & Home Appliances
-                  </span>
-                </li>
-                <li>
-                  <span className="category-icon">
-                    <i className="fa-solid fa-basketball"></i>
-                  </span>
-                  <span className="banner-category-title">
-                    Sports & Outdoor
-                  </span>
-                </li>
-                <li>
-                  <span className="category-icon">
-                    <i className="fa-solid fa-briefcase"></i>
-                  </span>
-                  <span className="banner-category-title">
-                    Watches, Bags & Jewellery
-                  </span>
-                </li>
-                <li>
-                  <span className="category-icon">
-                    <i className="fa-solid fa-car-side"></i>
-                  </span>
-                  <span className="banner-category-title">
-                    Automotive & Motorbike
-                  </span>
-                </li>
-              </ul>
+              />
             </div>
           </Grid>
           <Grid item xs={12} md={9.47}>
@@ -216,7 +120,7 @@ const Banner = () => {
           }}
         >
           {features.map((feature, index) => (
-            <>
+            <React.Fragment key={index}>
               <div className="d-flex align-items-center">
                 <img
                   src={feature.image}
@@ -236,7 +140,7 @@ const Banner = () => {
                   <i className="fa-solid fa-chevron-right"></i>
                 </div>
               )}
-            </>
+            </React.Fragment>
           ))}
         </Stack>
         <div className="d-flex justify-content-center">

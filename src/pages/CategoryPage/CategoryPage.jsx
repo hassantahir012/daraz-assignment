@@ -2,7 +2,6 @@ import React from "react";
 import "./style/style.css";
 import BreadCrumbs from "./Components/BreadCrumbs";
 import PageContent from "./Components/PageContent";
-import MessageBox from "../../components/MessageBox";
 import CompanyLinks from "../../components/CompanyLinks";
 
 function CategoryPage() {
@@ -15,7 +14,7 @@ function CategoryPage() {
         <BreadCrumbs />
         <PageContent />
       </div>
-      <div style={{ backgroundColor: "#F5F5F5" }} className="w-100">
+      <div className="homepage-body w-100">
         <div style={{ width: "89%", margin: "auto" }}>
           <CompanyLinks />
         </div>

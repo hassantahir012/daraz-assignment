@@ -64,8 +64,8 @@ function OtherProducts() {
             People Who Viewed This Item Also Viewed
           </h6>
           <Grid container>
-            {products.map((product) => (
-              <Grid item xs={12} sm={6} md={4} lg={3} xl={12}>
+            {products.map((product, index) => (
+              <Grid item xs={12} sm={6} md={4} lg={3} xl={12} key={index}>
                 <div className="recommend-product-item">
                   <div className="pdp-common-image product-image">
                     <div className="lazyload-wrapper">

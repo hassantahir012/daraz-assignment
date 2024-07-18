@@ -1,6 +1,6 @@
 import React from "react";
-import { AppIcon } from "../assets";
 import { useLocation } from "react-router-dom";
+import { homePagePath } from "../constants";
 
 function CompanyLinks() {
   const { pathname } = useLocation();
@@ -11,7 +11,7 @@ function CompanyLinks() {
           <div className="col-md-3 col-sm-4 col-xs-6">
             <h3
               className="footer-title footer-title-first mt-0"
-              style={{ marginTop: pathname !== "/" ? 0 : "" }}
+              style={{ marginTop: pathname !== homePagePath ? 0 : "" }}
             >
               Customer Care
             </h3>
@@ -60,7 +60,7 @@ function CompanyLinks() {
           >
             <h3
               className="footer-title footer-title-first mt-0"
-              style={{ marginTop: pathname !== "/" ? 0 : "" }}
+              style={{ marginTop: pathname !== homePagePath ? 0 : "" }}
             >
               Daraz
             </h3>
@@ -106,7 +106,7 @@ function CompanyLinks() {
           >
             <h3
               className="footer-title footer-title-first mt-0"
-              style={{ marginTop: pathname !== "/" ? 0 : "" }}
+              style={{ marginTop: pathname !== homePagePath ? 0 : "" }}
             >
               Daraz International
             </h3>
@@ -142,7 +142,7 @@ function CompanyLinks() {
                 <span className="country-name">Nepal</span>
               </a>
             </div>
-            <h3 className="footer-title">Payment Methods</h3>
+            <h3 className="sub-footer-title">Payment Methods</h3>
             <div className="payment__card__wrapper">
               <span className="drz-icon-payment icon-yatra-exists-payment-1">
                 <span className=" drz-footer-sprit-link drz-footer-sprit icon-yatra-payment-1"></span>
@@ -191,7 +191,7 @@ function CompanyLinks() {
           >
             <h3
               className="footer-title footer-title-first mt-0"
-              style={{ marginTop: pathname !== "/" ? 0 : "" }}
+              style={{ marginTop: pathname !== homePagePath ? 0 : "" }}
             >
               Exclusive Deals and Offers!
             </h3>
@@ -225,7 +225,7 @@ function CompanyLinks() {
               </div>
             </div>
             <h3 className="footer-title follow-us-heading">Follow Us</h3>
-            <div className="d-flex align-items-center">
+            <div className="d-flex align-items-center flex-wrap">
               <a href="" className="follow-us-icon-link">
                 <span className="logos--facebook"></span>
               </a>

@@ -7,6 +7,20 @@ body {
 .header input:disabled {
   background-color: #fff;
 }
+.auth-container {
+  background-color: #eff0f5;
+}
+.auth-container-inner {
+  max-width: 810px;
+  margin: auto;
+  padding-top: 6.7%;
+  background-color: #eff0f5;
+}
+.auth-title {
+  margin: 50px 0 15px;
+  height: 26px;
+  line-height: 26px;
+}
 .login-title h3 {
   font-size: 22px;
   color: #424242;
@@ -170,4 +184,69 @@ body {
 }
 .mod-login-policy a {
   padding-left: 3px;
+}
+.register-fb-btn {
+  margin-left: 2%;
+}
+.error-input-field {
+  border: 1px solid #f44336 !important;
+}
+.register-checkbox {
+  line-height: 1.15;
+  padding-right: 1px;
+}
+.color-999 {
+  color: #999;
+}
+.mt-2px {
+  margin-top: 2px;
+}
+.color-b8b8b8 {
+  color: #b8b8b8;
+}
+.auth-form {
+  width: 305px;
+}
+.birthday-month {
+  border: 1px solid #ddd;
+  height: 36px;
+  padding: 0 24px 0 4px;
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+  color: #999999;
+  font-size: 14px;
+}
+.birthday-day {
+  border: 1px solid #ddd;
+  height: 36px;
+  padding: 0 8px 0 4px;
+  /* border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px; */
+  color: #999999;
+  border-left: none;
+  font-size: 14px;
+}
+.birthday-year {
+  border: 1px solid #ddd;
+  height: 36px;
+  padding: 0px 15px 0 4px;
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+  color: #999999;
+  border-left: none;
+  font-size: 14px;
+}
+.gender-select {
+  border: 1px solid #ddd;
+  height: 36px;
+  padding: 0px 25px 0 4px;
+  border-radius: 2px;
+  color: #999999;
+  font-size: 14px;
+}
+.select-input:focus {
+  outline: none;
+}
+.mod-login-register {
+  min-height: 420px !important;
 }

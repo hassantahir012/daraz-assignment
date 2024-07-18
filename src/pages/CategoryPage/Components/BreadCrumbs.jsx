@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { homePagePath } from "../../../constants";
 
 function BreadCrumbs() {
   return (
@@ -6,7 +8,7 @@ function BreadCrumbs() {
       <div className="ant-breadcrumb">
         <span>
           <span className="ant-breadcrumb-link">
-            <a href="https://www.daraz.pk">Home</a>
+            <Link to={homePagePath}>Home</Link>
           </span>
           <span className="ant-breadcrumb-separator">/</span>
         </span>

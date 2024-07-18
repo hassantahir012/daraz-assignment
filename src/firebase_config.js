@@ -9,7 +9,6 @@ import {
   firebase_project_id,
   firebase_storage_bucket,
 } from "./config/config";
-console.log(firebase_api_key, "acasjkchgasjkcghasjk");
 const firebaseConfig = {
   apiKey: firebase_api_key,
   authDomain: firebase_auth_domain,

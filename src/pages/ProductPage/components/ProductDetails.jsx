@@ -2,7 +2,11 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { Grid } from "@mui/material";
 import React, { useState } from "react";
 
-function ProductDetails() {
+function ProductDetails({
+  currentImage,
+  handleChangeCurrentImage,
+  productImages,
+}) {
   const [quantity, setQuantity] = useState(1);
   return (
     <div className="pdp-block" id="root">
@@ -16,7 +20,7 @@ function ProductDetails() {
                     <img
                       alt="6 Grids Washable Wardrobe Clothes Organizer, Jeans Compartment Storage Box, Clothes Drawer Mesh Separation Box, Portable Foldable Closet"
                       className="gallery-preview-panel__image"
-                      src="https://static-01.daraz.pk/p/86460e6db3e2b38478b98de8249b11fd.jpg_750x750.jpg_.webp"
+                      src={currentImage}
                     />
                   </div>
                   <div className="tag-img-box">
@@ -25,6 +29,35 @@ function ProductDetails() {
                       src="//gcp-img.slatic.net/lazada/id0011848-186-80.png"
                     />
                   </div>
+                </div>
+              </div>
+              <div className="custom-slider-product">
+                <div className="d-flex gap-2">
+                  {productImages.map((image) => (
+                    <div
+                      className={`custom-image-wrapper ${
+                        image === currentImage
+                          ? "custom-image-wrapper-active"
+                          : ""
+                      }`}
+                      onMouseEnter={() => handleChangeCurrentImage(image)}
+                    >
+                      <img
+                        src={image}
+                        key={image}
+                        className="custom-slider-image"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div className="custom-prev-icon">
+                  <Icon
+                    icon="grommet-icons:previous"
+                    className="previous-icon"
+                  />
+                </div>
+                <div className="custom-next-icon">
+                  <Icon icon="grommet-icons:next" className="next-icon" />
                 </div>
               </div>
             </div>

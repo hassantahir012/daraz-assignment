@@ -6,11 +6,19 @@ import { auth, db } from "../../../firebase_config";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
+import { loginPagePath } from "../../../constants";
+import FacebookButton from "./FacebookButton";
+import GoogleButton from "./GoogleButton";
+import {
+  validateEmail,
+  validateFullName,
+  validatePasswordForRegister,
+  validateWhatsappVerificationCode,
+} from "../functions";
 
 function RegisterForm({ showPassword, setShowPassword }) {
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
-  const [width, setWidth] = useState(window.innerWidth);
   const [inputs, setInputs] = useState({
     email: "",
     whatsapp_verification_code: "",
@@ -29,9 +37,6 @@ function RegisterForm({ showPassword, setShowPassword }) {
     whatsapp_verification_code_error_message: "",
   });
   const [loading, setLoading] = useState(false);
-  const checkWidth = () => {
-    setWidth(window.innerWidth);
-  };
   const handleInputsChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -85,9 +90,6 @@ function RegisterForm({ showPassword, setShowPassword }) {
         inputs.email,
         inputs.password
       );
-      // .then((resp) => console.log(resp, "asjhcasjklhacs --resp"))
-      // .catch((err) => console.log({ ...err }, "asjhcasjklhacs --err"))
-      // .finally(() => setLoading(false));
       const user = userCredential.user;
       await setDoc(doc(db, "users", user.uid), {
         whatsapp_verification_code: inputs.whatsapp_verification_code,
@@ -96,7 +98,7 @@ function RegisterForm({ showPassword, setShowPassword }) {
         createdAt: new Date().toISOString(),
       });
       enqueueSnackbar("Registration Successfull", { variant: "success" });
-      navigate("/login");
+      navigate(loginPagePath);
     } catch (error) {
       enqueueSnackbar(error.customData._tokenResponse.error.message, {
         variant: "error",
@@ -106,15 +108,9 @@ function RegisterForm({ showPassword, setShowPassword }) {
       setLoading(false);
     }
   };
-  useEffect(() => {
-    window.addEventListener("resize", checkWidth);
-    return () => {
-      window.removeEventListener("resize", checkWidth);
-    };
-  }, [width]);
   return (
     <form action="" onSubmit={handleSubmit}>
-      <div className="mod-login mb-0">
+      <div className="mod-login mod-login-register mb-0">
         <Grid container spacing={2}>
           <Grid item xs={12} md={6.34}>
             <div className="mod-input mod-login-input-loginName mod-input-loginName">
@@ -127,88 +123,32 @@ function RegisterForm({ showPassword, setShowPassword }) {
                 name="email"
                 value={inputs.email}
                 onChange={(e) => {
-                  if (e.target.value === "") {
-                    setErrors((prev) => ({
-                      ...prev,
-                      email_error: true,
-                      email_error_message: "You can't leave this empty.",
-                    }));
-                  } else if (
-                    e.target.value.length < 6 ||
-                    e.target.value.length > 60
-                  ) {
-                    setErrors((prev) => ({
-                      ...prev,
-                      email_error: true,
-                      email_error_message:
-                        "The length of the Email should be 6-60 characters.",
-                    }));
-                  } else {
-                    setErrors((prev) => ({
-                      ...prev,
-                      email_error: false,
-                      email_error_message: "",
-                    }));
-                  }
-                  handleInputsChange(e);
+                  validateEmail(e, setErrors, handleInputsChange);
                 }}
-                style={{
-                  border: errors.email_error ? "1px solid #f44336" : "",
-                }}
+                className={errors.email_error ? "error-input-field" : ""}
               />
-              <span style={{ visibility: errors.email_error ? "visible" : "" }}>
+              <span className={errors.email_error ? "visible" : ""}>
                 {errors.email_error_message}
               </span>
             </div>
-            {width < 768 && (
-              <div className="mod-input mod-login-input-loginName mod-input-loginName">
-                <label htmlFor="">Full name*</label>
-                <input
-                  type="text"
-                  placeholder="Enter your first and last name"
-                  data-meta="Field"
-                  defaultValue=""
-                  name="full_name"
-                  value={inputs.full_name}
-                  onChange={(e) => {
-                    if (e.target.value === "") {
-                      setErrors((prev) => ({
-                        ...prev,
-                        full_name_error: true,
-                        full_name_error_message: "You can't leave this empty.",
-                      }));
-                    } else if (
-                      e.target.value.length < 2 ||
-                      e.target.value.length > 50
-                    ) {
-                      setErrors((prev) => ({
-                        ...prev,
-                        full_name_error: true,
-                        full_name_error_message:
-                          "The name length should be 2 - 50 characters.",
-                      }));
-                    } else {
-                      setErrors((prev) => ({
-                        ...prev,
-                        full_name_error: false,
-                        full_name_error_message: "",
-                      }));
-                    }
-                    handleInputsChange(e);
-                  }}
-                  style={{
-                    border: errors.full_name_error ? "1px solid #f44336" : "",
-                  }}
-                />
-                <span
-                  style={{
-                    visibility: errors.full_name_error ? "visible" : "",
-                  }}
-                >
-                  {errors.full_name_error_message}
-                </span>
-              </div>
-            )}
+            <div className="mod-input mod-login-input-loginName mod-input-loginName mod-input-loginName-1">
+              <label htmlFor="">Full name*</label>
+              <input
+                type="text"
+                placeholder="Enter your first and last name"
+                data-meta="Field"
+                defaultValue=""
+                name="full_name"
+                value={inputs.full_name}
+                onChange={(e) => {
+                  validateFullName(e, setErrors, handleInputsChange);
+                }}
+                className={errors.full_name_error ? "error-input-field" : ""}
+              />
+              <span className={errors.full_name_error ? "visible" : ""}>
+                {errors.full_name_error_message}
+              </span>
+            </div>
             <div className="mod-input mod-login-input-loginName mod-input-loginName">
               <label htmlFor="">Verification Code from whatsApp*</label>
               <input
@@ -219,53 +159,26 @@ function RegisterForm({ showPassword, setShowPassword }) {
                 name="whatsapp_verification_code"
                 value={inputs.whatsapp_verification_code}
                 onChange={(e) => {
-                  if (
-                    /^[0-9]+$/.test(e.target.value) ||
-                    e.target.value === ""
-                  ) {
-                    if (e.target.value === "") {
-                      setErrors((prev) => ({
-                        ...prev,
-                        whatsapp_verification_code_error: true,
-                        whatsapp_verification_code_error_message:
-                          "You can't leave this empty.",
-                      }));
-                    } else if (e.target.value.length !== 6) {
-                      setErrors((prev) => ({
-                        ...prev,
-                        whatsapp_verification_code_error: true,
-                        whatsapp_verification_code_error_message:
-                          "Please enter 6 digits",
-                      }));
-                    } else {
-                      setErrors((prev) => ({
-                        ...prev,
-                        whatsapp_verification_code_error: false,
-                        whatsapp_verification_code_error_message: "",
-                      }));
-                    }
-                    handleInputsChange(e);
-                  }
+                  validateWhatsappVerificationCode(
+                    e,
+                    setErrors,
+                    handleInputsChange
+                  );
                 }}
-                style={{
-                  border: errors.whatsapp_verification_code_error
-                    ? "1px solid #f44336"
-                    : "",
-                }}
+                className={
+                  errors.whatsapp_verification_code_error
+                    ? "error-input-field"
+                    : ""
+                }
               />
               <span
-                style={{
-                  visibility: errors.whatsapp_verification_code_error
-                    ? "visible"
-                    : "",
-                }}
+                className={
+                  errors.whatsapp_verification_code_error ? "visible" : ""
+                }
               >
                 {errors.whatsapp_verification_code_error_message}
               </span>
-              <div
-                className="mod-input-password-icon mod-login-forgot"
-                style={{ color: "#999", marginTop: "2px" }}
-              >
+              <div className="mod-input-password-icon mod-login-forgot color-999 mt-2px">
                 <div>Send</div>
               </div>
             </div>
@@ -279,69 +192,85 @@ function RegisterForm({ showPassword, setShowPassword }) {
                 name="password"
                 value={inputs.password}
                 onChange={(e) => {
-                  if (e.target.value === "") {
-                    setErrors((prev) => ({
-                      ...prev,
-                      password_error: true,
-                      password_error_message: "You can't leave this empty.",
-                    }));
-                  } else if (
-                    e.target.value.length < 6 ||
-                    e.target.value.length > 60
-                  ) {
-                    setErrors((prev) => ({
-                      ...prev,
-                      password_error: true,
-                      password_error_message:
-                        "The length of Password should be 6-50 characters.",
-                    }));
-                  } else if (
-                    !(
-                      /[a-zA-Z]/.test(e.target.value) &&
-                      /[0-9]/.test(e.target.value)
-                    )
-                  ) {
-                    setErrors((prev) => ({
-                      ...prev,
-                      password_error: true,
-                      password_error_message:
-                        "Password should contain alphabetic and numeric characters.",
-                    }));
-                  } else {
-                    setErrors((prev) => ({
-                      ...prev,
-                      password_error: false,
-                      password_error_message: "",
-                    }));
-                  }
-                  handleInputsChange(e);
+                  validatePasswordForRegister(e, setErrors, handleInputsChange);
                 }}
-                style={{
-                  border: errors.password_error ? "1px solid #f44336" : "",
-                }}
+                className={errors.password_error ? "error-input-field" : ""}
               />
-              <span
-                style={{
-                  visibility: errors.password_error ? "visible" : "",
-                }}
-              >
+              <span className={errors.password_error ? "visible" : ""}>
                 {errors.password_error_message}
               </span>
               <div className="mod-input-password-icon">
                 {!showPassword && (
                   <Icon
                     icon="tabler:eye-closed"
-                    style={{ color: "#b8b8b8" }}
+                    className="color-b8b8b8"
                     onClick={() => setShowPassword((prev) => !prev)}
                   />
                 )}
                 {showPassword && (
                   <Icon
                     icon="radix-icons:eye-open"
-                    style={{ color: "#b8b8b8" }}
+                    className="color-b8b8b8"
                     onClick={() => setShowPassword((prev) => !prev)}
                   />
                 )}
+              </div>
+            </div>
+            <div className="mod-input mod-login-input-loginName mod-input-loginName">
+              <div className="d-flex gap-2">
+                <div>
+                  <label htmlFor="">Birthday</label>
+                  <select className="select-input birthday-month">
+                    <option value="" hidden selected>
+                      Month
+                    </option>
+                    <option value="01">January</option>
+                    <option value="02">Febraury</option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                  </select>
+                  <select className="select-input birthday-day">
+                    <option value="" hidden selected>
+                      Day
+                    </option>
+                    {[...Array(31).keys()].map((index) => (
+                      <option
+                        value={String(index + 1).padStart(2, "0")}
+                        key={index}
+                      >
+                        {index + 1}
+                      </option>
+                    ))}
+                  </select>
+                  <select className="select-input birthday-year">
+                    <option value="" hidden selected>
+                      Year
+                    </option>
+                    {[...Array(35).keys()].map((index) => (
+                      <option value={String(index + 1990)} key={index}>
+                        {index + 1990}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="">Gender</label>
+                  <select className="select-input gender-select">
+                    <option value="" hidden selected>
+                      Select
+                    </option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
+                </div>
               </div>
             </div>
           </Grid>
@@ -349,73 +278,30 @@ function RegisterForm({ showPassword, setShowPassword }) {
             <div
               className={"d-flex justify-content-center justify-content-md-end"}
             >
-              <div style={{ width: "305px" }}>
-                {width >= 768 && (
-                  <div className="mod-input mod-login-input-loginName mod-input-loginName">
-                    <label htmlFor="">Full name*</label>
-                    <input
-                      type="text"
-                      placeholder="Enter your first and last name"
-                      data-meta="Field"
-                      defaultValue=""
-                      name="full_name"
-                      value={inputs.full_name}
-                      onChange={(e) => {
-                        if (e.target.value === "") {
-                          setErrors((prev) => ({
-                            ...prev,
-                            full_name_error: true,
-                            full_name_error_message:
-                              "You can't leave this empty.",
-                          }));
-                        } else if (
-                          e.target.value.length < 2 ||
-                          e.target.value.length > 50
-                        ) {
-                          setErrors((prev) => ({
-                            ...prev,
-                            full_name_error: true,
-                            full_name_error_message:
-                              "The name length should be 2 - 50 characters.",
-                          }));
-                        } else {
-                          setErrors((prev) => ({
-                            ...prev,
-                            full_name_error: false,
-                            full_name_error_message: "",
-                          }));
-                        }
-                        handleInputsChange(e);
-                      }}
-                      style={{
-                        border: errors.full_name_error
-                          ? "1px solid #f44336"
-                          : "",
-                      }}
-                    />
-                    <span
-                      style={{
-                        visibility: errors.full_name_error ? "visible" : "",
-                      }}
-                    >
-                      {errors.full_name_error_message}
-                    </span>
-                  </div>
-                )}
-                <div className="mod-login-receive">
+              <div className="auth-form">
+                <div className="mod-input mod-login-input-loginName mod-input-loginName mod-input-loginName-2">
+                  <label htmlFor="">Full name*</label>
                   <input
-                    type="checkbox"
-                    style={{
-                      width: "16px",
-                      height: "16px",
-                      marginRight: "9px",
-                      marginTop: "1px",
+                    type="text"
+                    placeholder="Enter your first and last name"
+                    data-meta="Field"
+                    defaultValue=""
+                    name="full_name"
+                    value={inputs.full_name}
+                    onChange={(e) => {
+                      validateFullName(e, setErrors, handleInputsChange);
                     }}
+                    className={
+                      errors.full_name_error ? "error-input-field" : ""
+                    }
                   />
-                  <p
-                    className="m-0"
-                    style={{ lineHeight: "1.15", paddingRight: "1px" }}
-                  >
+                  <span className={errors.full_name_error ? "visible" : ""}>
+                    {errors.full_name_error_message}
+                  </span>
+                </div>
+                <div className="mod-login-receive">
+                  <input type="checkbox" className="register-checkbox" />
+                  <p className="register-checkbox m-0">
                     I'd like to receive exclusive offers and promotions via SMS
                   </p>
                 </div>
@@ -428,10 +314,7 @@ function RegisterForm({ showPassword, setShowPassword }) {
                     {!loading ? "SIGN UP" : "Please Wait..."}
                   </button>
                 </div>
-                <div
-                  className="mod-login-policy"
-                  style={{ lineHeight: "1.15" }}
-                >
+                <div className="mod-login-policy">
                   <span>
                     By clicking “SIGN UP”, I agree to Daraz's{" "}
                     <a
@@ -454,38 +337,11 @@ function RegisterForm({ showPassword, setShowPassword }) {
                 <div className="mod-login-third">
                   <div className="mod-third-party-login mod-login-third-btns">
                     <div className="mod-third-party-login-line">
-                      <span style={{ color: "#999" }}>Or, sign up with</span>
+                      <span className="color-999">Or, sign up with</span>
                     </div>
                     <div className="mod-third-party-login-bd d-flex">
-                      <button className="mod-button mod-third-party-login-btn mod-third-party-login-fb mb-0">
-                        <Icon
-                          icon="uim:facebook-f"
-                          style={{
-                            color: "white",
-                            height: "1.2rem",
-                            width: "1.2rem",
-                            marginRight: "14px",
-                            marginTop: "-5px",
-                          }}
-                        />{" "}
-                        Facebook
-                      </button>
-                      <button
-                        className="mod-button mod-third-party-login-btn mod-third-party-login-google"
-                        style={{ marginLeft: "2%" }}
-                      >
-                        <Icon
-                          icon="jam:google-plus"
-                          style={{
-                            color: "white",
-                            height: "2rem",
-                            width: "2rem",
-                            marginRight: "14px",
-                            marginTop: "-5px",
-                          }}
-                        />{" "}
-                        Google
-                      </button>
+                      <FacebookButton customClass="mb-0" />
+                      <GoogleButton customClass="register-fb-btn" />
                     </div>
                   </div>
                 </div>

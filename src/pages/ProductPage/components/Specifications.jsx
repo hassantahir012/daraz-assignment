@@ -1,8 +1,9 @@
 import { Stack } from "@mui/material";
 import React, { useState } from "react";
 
-function Specifications() {
+function Specifications({ productImages = [] }) {
   const [viewMore, setViewMore] = useState(false);
+
   return (
     <div
       id="block-pJYzWPb3ErH"
@@ -49,37 +50,11 @@ function Specifications() {
                 <img src="https://ae01.alicdn.com/kf/HTB1DojbKkzoK1RjSZFlq6yi4VXal.jpg" />
               </p>
               <Stack spacing={1.75}>
-                <p>
-                  <img
-                    src="https://static-01.daraz.pk/p/f57b6e87e29208d111e4bd63e20e169f.jpg"
-                    data-spm-anchor-id="a2a0e.pdp.product_detail.i1.62b6748egcm1JZ"
-                  />
-                </p>
-                <p>
-                  <img src="https://static-01.daraz.pk/p/c2654e652d98ad4c68f3c0962e5bfd18.jpg" />
-                </p>
-                <p>
-                  <img src="https://static-01.daraz.pk/p/4a08dd2ed93e387a63187e3661dc871c.jpg" />
-                </p>
-                <p>
-                  <img src="https://static-01.daraz.pk/p/0e2da6e72c58c3f6c785426cc6885a67.jpg" />
-                </p>
-                <p>
-                  <img src="https://static-01.daraz.pk/p/1a5722ace58b68e9c28f4faa7969ec52.jpg" />
-                </p>
-                <p>
-                  <img src="https://static-01.daraz.pk/p/0004f702c5b26c14eaea07c0e8dcb862.jpg" />
-                </p>
-                <p>
-                  <img src="https://static-01.daraz.pk/p/21a1c5924ffa9a10be961a06f45ddfeb.jpg" />
-                </p>
-                <p>
-                  <img
-                    src="https://static-01.daraz.pk/p/c13da213dbe0a5ba2a06170f805d5bd6.jpg"
-                    data-spm-anchor-id="a1zawk.page_product_publish.0.i16.39df7709TVfvSR"
-                  />
-                  <span style={{ fontSize: 14 }} />
-                </p>
+                {productImages.map((image) => (
+                  <p>
+                    <img src={image} key={image} />
+                  </p>
+                ))}
               </Stack>
               <div />
             </div>

@@ -24,7 +24,7 @@ function App() {
         autoHideDuration={2000}
         action={(key) => (
           <IconButton onClick={onClickDismiss(key)}>
-            <Icon icon="mdi:close" style={{ color: "#fff" }} />
+            <Icon icon="mdi:close" className="text-white" />
           </IconButton>
         )}
       >

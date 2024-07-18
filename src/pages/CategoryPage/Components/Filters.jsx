@@ -1,7 +1,16 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import React from "react";
 
-function Filters() {
+function Filters({ filter, setFilter }) {
+  const handleFilterChange = (type, e) => {
+    setFilter((prev) => ({
+      ...prev,
+      [type]:
+        e.target.checked === true
+          ? [...prev[type], e.target.value]
+          : [...prev[type].filter((val) => val !== e.target.value)],
+    }));
+  };
   return (
     <div className="filter-list--Ycia_" data-spm="filter">
       <div className="filter-title--YJ0u2">Filters</div>
@@ -106,8 +115,11 @@ function Filters() {
               <label className="checkbox--tqPns ant-checkbox-wrapper">
                 <span className="ant-checkbox">
                   <input
+                    onChange={(e) => handleFilterChange("brand", e)}
+                    value={"Mishbeeka"}
+                    checked={filter.brand.includes("Mishbeeka")}
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d1"
                     defaultValue="on"
                   />
@@ -118,8 +130,11 @@ function Filters() {
               <label className="checkbox--tqPns ant-checkbox-wrapper">
                 <span className="ant-checkbox">
                   <input
+                    onChange={(e) => handleFilterChange("brand", e)}
+                    value={"BASEIN"}
+                    checked={filter.brand.includes("BASEIN")}
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d2"
                     defaultValue="on"
                   />
@@ -130,8 +145,11 @@ function Filters() {
               <label className="checkbox--tqPns ant-checkbox-wrapper">
                 <span className="ant-checkbox">
                   <input
+                    onChange={(e) => handleFilterChange("brand", e)}
+                    value={"Blingstar"}
+                    checked={filter.brand.includes("Blingstar")}
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d3"
                     defaultValue="on"
                   />
@@ -142,8 +160,11 @@ function Filters() {
               <label className="checkbox--tqPns ant-checkbox-wrapper">
                 <span className="ant-checkbox">
                   <input
+                    onChange={(e) => handleFilterChange("brand", e)}
+                    value={"Techmanistan"}
+                    checked={filter.brand.includes("Techmanistan")}
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d4"
                     defaultValue="on"
                   />
@@ -154,8 +175,11 @@ function Filters() {
               <label className="checkbox--tqPns ant-checkbox-wrapper">
                 <span className="ant-checkbox">
                   <input
+                    onChange={(e) => handleFilterChange("brand", e)}
+                    value={"IKEA"}
+                    checked={filter.brand.includes("IKEA")}
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d5"
                     defaultValue="on"
                   />
@@ -166,8 +190,11 @@ function Filters() {
               <label className="checkbox--tqPns ant-checkbox-wrapper">
                 <span className="ant-checkbox">
                   <input
+                    onChange={(e) => handleFilterChange("brand", e)}
+                    value={"FastForward"}
+                    checked={filter.brand.includes("FastForward")}
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d6"
                     defaultValue="on"
                   />
@@ -178,8 +205,11 @@ function Filters() {
               <label className="checkbox--tqPns ant-checkbox-wrapper">
                 <span className="ant-checkbox">
                   <input
+                    onChange={(e) => handleFilterChange("brand", e)}
+                    value={"Premier Home"}
+                    checked={filter.brand.includes("Premier Home")}
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d7"
                     defaultValue="on"
                   />
@@ -190,10 +220,13 @@ function Filters() {
               <label className="checkbox--tqPns ant-checkbox-wrapper">
                 <span className="ant-checkbox">
                   <input
+                    onChange={(e) => handleFilterChange("brand", e)}
+                    value={"OcraEmporium"}
+                    checked={filter.brand.includes("OcraEmporium")}
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d8"
-                    defaultValue="on"
+                    // defaultValue="on"
                   />
                   <span className="ant-checkbox-inner" />
                 </span>
@@ -203,7 +236,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d9"
                     defaultValue="on"
                   />
@@ -215,7 +248,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d10"
                     defaultValue="on"
                   />
@@ -227,7 +260,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d11"
                     defaultValue="on"
                   />
@@ -239,7 +272,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d12"
                     defaultValue="on"
                   />
@@ -642,7 +675,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d1"
                     defaultValue="on"
                   />
@@ -654,7 +687,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d2"
                     defaultValue="on"
                   />
@@ -666,7 +699,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d3"
                     defaultValue="on"
                   />
@@ -687,7 +720,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d1"
                     defaultValue="on"
                   />
@@ -699,7 +732,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d2"
                     defaultValue="on"
                     checked
@@ -712,7 +745,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d3"
                     defaultValue="on"
                   />
@@ -724,7 +757,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d4"
                     defaultValue="on"
                   />
@@ -736,7 +769,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d5"
                     defaultValue="on"
                   />
@@ -748,7 +781,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d6"
                     defaultValue="on"
                   />
@@ -760,7 +793,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d7"
                     defaultValue="on"
                   />
@@ -772,7 +805,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d8"
                     defaultValue="on"
                   />
@@ -784,7 +817,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d9"
                     defaultValue="on"
                   />
@@ -796,7 +829,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d10"
                     defaultValue="on"
                   />
@@ -820,7 +853,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d1"
                     defaultValue="on"
                   />
@@ -832,7 +865,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d2"
                     defaultValue="on"
                   />
@@ -853,7 +886,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d1"
                     defaultValue="on"
                   />
@@ -865,7 +898,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d2"
                     defaultValue="on"
                   />
@@ -877,7 +910,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d3"
                     defaultValue="on"
                   />
@@ -889,7 +922,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d4"
                     defaultValue="on"
                   />
@@ -901,7 +934,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d5"
                     defaultValue="on"
                   />
@@ -913,7 +946,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d6"
                     defaultValue="on"
                   />
@@ -925,7 +958,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d7"
                     defaultValue="on"
                   />
@@ -946,7 +979,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d1"
                     defaultValue="on"
                   />
@@ -958,7 +991,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d2"
                     defaultValue="on"
                   />
@@ -970,7 +1003,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d3"
                     defaultValue="on"
                   />
@@ -982,7 +1015,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d4"
                     defaultValue="on"
                   />
@@ -994,7 +1027,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d5"
                     defaultValue="on"
                   />
@@ -1006,7 +1039,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d6"
                     defaultValue="on"
                   />
@@ -1018,7 +1051,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d7"
                     defaultValue="on"
                   />
@@ -1030,7 +1063,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d8"
                     defaultValue="on"
                   />
@@ -1042,7 +1075,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d9"
                     defaultValue="on"
                   />
@@ -1054,7 +1087,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d10"
                     defaultValue="on"
                   />
@@ -1066,7 +1099,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d11"
                     defaultValue="on"
                   />
@@ -1078,7 +1111,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d12"
                     defaultValue="on"
                   />
@@ -1090,7 +1123,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d13"
                     defaultValue="on"
                   />
@@ -1102,7 +1135,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d14"
                     defaultValue="on"
                   />
@@ -1114,7 +1147,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d15"
                     defaultValue="on"
                   />
@@ -1126,7 +1159,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d16"
                     defaultValue="on"
                   />
@@ -1138,7 +1171,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d17"
                     defaultValue="on"
                   />
@@ -1162,7 +1195,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d1"
                     defaultValue="on"
                   />
@@ -1174,7 +1207,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d2"
                     defaultValue="on"
                   />
@@ -1186,7 +1219,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d3"
                     defaultValue="on"
                   />
@@ -1198,7 +1231,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d4"
                     defaultValue="on"
                   />
@@ -1210,7 +1243,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d5"
                     defaultValue="on"
                   />
@@ -1222,7 +1255,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d6"
                     defaultValue="on"
                   />
@@ -1234,7 +1267,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d7"
                     defaultValue="on"
                   />
@@ -1246,7 +1279,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d8"
                     defaultValue="on"
                   />
@@ -1258,7 +1291,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d9"
                     defaultValue="on"
                   />
@@ -1270,7 +1303,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d10"
                     defaultValue="on"
                   />
@@ -1282,7 +1315,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d11"
                     defaultValue="on"
                   />
@@ -1294,7 +1327,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d12"
                     defaultValue="on"
                   />
@@ -1306,7 +1339,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d13"
                     defaultValue="on"
                   />
@@ -1318,7 +1351,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d14"
                     defaultValue="on"
                   />
@@ -1330,7 +1363,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d15"
                     defaultValue="on"
                   />
@@ -1342,7 +1375,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d16"
                     defaultValue="on"
                   />
@@ -1354,7 +1387,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d17"
                     defaultValue="on"
                   />
@@ -1366,7 +1399,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d18"
                     defaultValue="on"
                   />
@@ -1378,7 +1411,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d19"
                     defaultValue="on"
                   />
@@ -1390,7 +1423,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d20"
                     defaultValue="on"
                   />
@@ -1402,7 +1435,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d21"
                     defaultValue="on"
                   />
@@ -1414,7 +1447,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d22"
                     defaultValue="on"
                   />
@@ -1426,7 +1459,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d23"
                     defaultValue="on"
                   />
@@ -1438,7 +1471,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d24"
                     defaultValue="on"
                   />
@@ -1450,7 +1483,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d25"
                     defaultValue="on"
                   />
@@ -1462,7 +1495,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d26"
                     defaultValue="on"
                   />
@@ -1474,7 +1507,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d27"
                     defaultValue="on"
                   />
@@ -1486,7 +1519,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d28"
                     defaultValue="on"
                   />
@@ -1498,7 +1531,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d29"
                     defaultValue="on"
                   />
@@ -1510,7 +1543,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d30"
                     defaultValue="on"
                   />
@@ -1534,7 +1567,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d1"
                     defaultValue="on"
                   />
@@ -1546,7 +1579,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d2"
                     defaultValue="on"
                   />
@@ -1558,7 +1591,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d3"
                     defaultValue="on"
                   />
@@ -1570,7 +1603,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d4"
                     defaultValue="on"
                   />
@@ -1582,7 +1615,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d5"
                     defaultValue="on"
                   />
@@ -1594,7 +1627,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d6"
                     defaultValue="on"
                   />
@@ -1606,7 +1639,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d7"
                     defaultValue="on"
                   />
@@ -1618,7 +1651,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d8"
                     defaultValue="on"
                   />
@@ -1630,7 +1663,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d9"
                     defaultValue="on"
                   />
@@ -1642,7 +1675,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d10"
                     defaultValue="on"
                   />
@@ -1654,7 +1687,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d11"
                     defaultValue="on"
                   />
@@ -1666,7 +1699,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d12"
                     defaultValue="on"
                   />
@@ -1678,7 +1711,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d13"
                     defaultValue="on"
                   />
@@ -1690,7 +1723,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d14"
                     defaultValue="on"
                   />
@@ -1702,7 +1735,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d15"
                     defaultValue="on"
                   />
@@ -1714,7 +1747,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d16"
                     defaultValue="on"
                   />
@@ -1726,7 +1759,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d17"
                     defaultValue="on"
                   />
@@ -1738,7 +1771,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d18"
                     defaultValue="on"
                   />
@@ -1750,7 +1783,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d19"
                     defaultValue="on"
                   />
@@ -1762,7 +1795,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d20"
                     defaultValue="on"
                   />
@@ -1774,7 +1807,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d21"
                     defaultValue="on"
                   />
@@ -1786,7 +1819,7 @@ function Filters() {
                 <span className="ant-checkbox">
                   <input
                     type="checkbox"
-                    className="ant-checkbox-input"
+                    // className="ant-checkbox-input"
                     data-spm-click="gostr=/lzdse.result.filter;locaid=d22"
                     defaultValue="on"
                   />

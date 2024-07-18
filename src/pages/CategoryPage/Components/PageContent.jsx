@@ -4,9 +4,14 @@ import React, { useEffect, useState } from "react";
 import Products from "./Products";
 import Filters from "./Filters";
 import { Drawer, IconButton } from "@mui/material";
+import Service from "../../../services/service";
 
 function PageContent() {
-  const [width, setWidth] = useState(window.innerWidth);
+  const [filter, setFilter] = useState({
+    sortBy: "best_match",
+    brand: [],
+  });
+  const [products, setProducts] = useState([]);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const openFilters = () => {
     setFiltersOpen(true);
@@ -14,30 +19,62 @@ function PageContent() {
   const closeFilters = () => {
     setFiltersOpen(false);
   };
+  const getProducts = async () => {
+    const result = await Service.getCategoryProducts();
+    setProducts(result.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  };
+  const handleSortByChange = (val) =>
+    setFilter((prev) => ({ ...prev, sortBy: val }));
+
+  const filterAndSortProducts = () => {
+    let filteredProducts = [...products];
+    if (filter.brand.length > 0) {
+      filteredProducts = products.filter((product) =>
+        filter.brand.includes(product.brand)
+      );
+    }
+    let sortedProducts;
+    switch (filter.sortBy) {
+      case "top_sales":
+        sortedProducts = [...filteredProducts].sort(
+          (a, b) => b.items_sold - a.items_sold
+        );
+        break;
+      case "newest_arrivals":
+        sortedProducts = [...filteredProducts].sort(
+          (a, b) => b.createdAt - a.createdAt
+        );
+        break;
+      case "price_low_to_high":
+        sortedProducts = [...filteredProducts].sort(
+          (a, b) => a.current_price - b.current_price
+        );
+        break;
+      default:
+        sortedProducts = filteredProducts;
+    }
+
+    return sortedProducts;
+  };
+  const handleRemoveBrand = (brand) => {
+    setFilter((prev) => ({
+      ...prev,
+      brand: prev.brand.filter((val) => val !== brand),
+    }));
+  };
+  const handleClearAllBrands = () => {
+    setFilter((prev) => ({ ...prev, brand: [] }));
+  };
   useEffect(() => {
-    window.addEventListener("resize", () => setWidth(window.innerWidth));
-    return () => {
-      window.removeEventListener("resize", () => setWidth(window.innerWidth));
-    };
+    getProducts();
   }, []);
   return (
     <>
       <div style={{ width: "100%" }} className="d-flex">
-        {width >= 992 && (
-          <div
-            style={{
-              width: "20.833333%",
-            }}
-          >
-            <Filters />
-          </div>
-        )}
-        <div
-          style={{
-            width: width >= 992 ? "79.16666%" : "100%",
-            paddingLeft: "20px",
-          }}
-        >
+        <div className="filters-div">
+          <Filters filter={filter} setFilter={setFilter} />
+        </div>
+        <div className="category-products-div">
           <div
             style={{
               paddingBottom: "15px",
@@ -65,15 +102,9 @@ function PageContent() {
                   </div>
                 </div>
               </div>
-              <div
-                className={`col-12 col-md-7 d-flex ${
-                  width >= 992 ? "justify-content-end" : "justify-content-start"
-                }`}
-              >
+              <div className="col-12 col-md-7 d-flex sort-by-div">
                 <div
                   style={{
-                    //   fontSize: "14px",
-                    //   lineHeight: "40px",
                     color: "#000000a6",
                     marginRight: "10px",
                   }}
@@ -91,13 +122,14 @@ function PageContent() {
                       width: "100%",
                       height: "100%",
                     }}
-                    defaultValue={"best_match"}
+                    defaultValue={filter.sortBy}
+                    onChange={handleSortByChange}
                     options={[
                       { value: "best_match", label: "Best Match" },
                       { value: "top_sales", label: "Top Sales" },
                       { value: "newest_arrivals", label: "Newest Arrivals" },
                       {
-                        value: "price_low_tohigh",
+                        value: "price_low_to_high",
                         label: "Price Low to High",
                       },
                     ]}
@@ -167,15 +199,39 @@ function PageContent() {
                   products only
                 </span>
               </div>
-              {width < 992 && (
-                <div onClick={openFilters} className="filter-button">
-                  Filters
-                  <Icon style={{ marginLeft: "5px" }} icon="ion:filter" />
-                </div>
-              )}
+              <div onClick={openFilters} className="filter-button">
+                Filters
+                <Icon style={{ marginLeft: "5px" }} icon="ion:filter" />
+              </div>
             </div>
           </div>
-          <Products />
+          {filter.brand.length > 0 && (
+            <div
+              className="active-filters--YsSFd"
+              data-spm="selectedFilter"
+              data-spm-anchor-id=""
+            >
+              {filter.brand.map((filterBrand) => (
+                <div data-show="true" className="ant-tag" key={filterBrand}>
+                  <span className="ant-tag-text">Brand: {filterBrand}</span>
+                  <Icon
+                    icon="charm:cross"
+                    className="brand-clear-icon ms-1"
+                    color="black"
+                    onClick={() => handleRemoveBrand(filterBrand)}
+                  />
+                </div>
+              ))}
+              <span
+                className="active-filters__clear--ZRgT2"
+                onClick={handleClearAllBrands}
+              >
+                Clear all
+              </span>
+            </div>
+          )}
+
+          <Products products={filterAndSortProducts()} />
         </div>
       </div>
       <Drawer
@@ -197,7 +253,7 @@ function PageContent() {
           >
             <Icon icon="mdi:close" />
           </IconButton>
-          <Filters />
+          <Filters filter={filter} setFilter={setFilter} />
         </div>
       </Drawer>
     </>

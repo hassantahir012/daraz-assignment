@@ -1,8 +1,8 @@
 import { Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebase_config";
 import { useNavigate } from "react-router-dom";
+import Service from "../services/service";
+import { productPagePath } from "../constants";
 function FlashSales() {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
@@ -30,7 +30,7 @@ function FlashSales() {
     }));
   };
   const getProducts = async () => {
-    const result = await getDocs(collection(db, "flash_sale"));
+    const result = await Service.getFlashSalesProducts();
     setProducts(result.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
   useEffect(() => {
@@ -45,10 +45,8 @@ function FlashSales() {
   }, [time]);
   return (
     <div className="mb-4">
-      <h3 className="categories-heading mb-1" style={{ color: "#757575" }}>
-        Flash Sale
-      </h3>
-      <div style={{ minHeight: "375px", backgroundColor: "#fff" }}>
+      <h3 className="flash-sales-heading mb-1">Flash Sale</h3>
+      <div className="card-fs-content-header-parent">
         <div className="d-flex justify-content-between card-fs-content-header ps-4 pe-2">
           <div className="d-flex">
             <div className="fs-status-text">On Sale Now</div>
@@ -66,19 +64,18 @@ function FlashSales() {
             </div>
           </div>
           <div>
-            <a
-              href=""
-              className="card-fs-content-button"
-              style={{ borderColor: "#f57224", color: "#f57224" }}
-            >
+            <a href="" className="card-fs-content-button">
               SHOP MORE
             </a>
           </div>
         </div>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} className="px-2 px-md-0">
           {products.map((product) => (
             <Grid item xs={12} sm={6} md={3} lg={2} key={product.id}>
-              <div className="custom-card" onClick={() => navigate("/product")}>
+              <div
+                className="custom-card"
+                onClick={() => navigate(productPagePath)}
+              >
                 <div className="mb-1">
                   <img src={product.image} alt="" width="100%" />
                 </div>
