@@ -1,6 +1,6 @@
 import React from "react";
 import Slider from "@ant-design/react-slick";
-import { BelowBanner, five, four, one, six, three, two } from "../assets";
+import { BelowBanner, five, four, one, six, three, two } from "../../../assets";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import "slick-carousel/slick/slick.css";
@@ -77,10 +77,7 @@ const Banner = () => {
         <Grid container spacing={2} mb={2}>
           <Grid item xs={12} md={2.53}>
             <div className="custom-shadow-card">
-              <CategoryUnorderedList
-                className="list-unstyled category-list mb-0 pt-2"
-                style={{ paddingBottom: "6px" }}
-              />
+              <CategoryUnorderedList className="list-unstyled category-list mb-0 pt-2" />
             </div>
           </Grid>
           <Grid item xs={12} md={9.47}>
@@ -124,19 +121,17 @@ const Banner = () => {
               <div className="d-flex align-items-center">
                 <img
                   src={feature.image}
+                  className="feature-image"
                   width={24}
                   height={24}
-                  style={{ marginRight: "5px" }}
                 />
                 <a href="">{feature.title}</a>
               </div>
               {index < features.length - 1 && (
-                <div style={{ fontSize: "13px", color: "rgba(0, 0, 0, .2)" }}>
-                  |
-                </div>
+                <div className="feature-divider">|</div>
               )}
               {index === features.length - 1 && (
-                <div style={{ fontSize: "13px" }}>
+                <div className="feature-divider-last">
                   <i className="fa-solid fa-chevron-right"></i>
                 </div>
               )}
@@ -144,7 +139,7 @@ const Banner = () => {
           ))}
         </Stack>
         <div className="d-flex justify-content-center">
-          <img src={BelowBanner} style={{ maxWidth: "100%" }} />
+          <img src={BelowBanner} className="below-banner-image" />
         </div>
       </section>
       {/* <div className="feature-container"></div> */}

@@ -250,3 +250,17 @@ body {
 .mod-login-register {
   min-height: 420px !important;
 }
+.google-icon {
+  color: white;
+  height: 2rem;
+  width: 2rem;
+  margin-right: 14px;
+  margin-top: -5px;
+}
+.facebook-icon {
+  color: white;
+  height: 1.2rem;
+  width: 1.2rem;
+  margin-right: 14px;
+  margin-top: -5px;
+}

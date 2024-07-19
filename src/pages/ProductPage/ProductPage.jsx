@@ -20,11 +20,8 @@ function ProductPage() {
     setCurretImage(image);
   };
   return (
-    <div style={{ backgroundColor: "#EFF0F5" }}>
-      <div
-        className="custom-container custom-container-body"
-        style={{ paddingTop: "6.6%", paddingBottom: "20px" }}
-      >
+    <div className="product-page">
+      <div className="custom-container custom-container-body product-page-container">
         <BreadCrumbs />
         <ProductDetails
           currentImage={curretImage}

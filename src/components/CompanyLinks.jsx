@@ -5,14 +5,11 @@ import { homePagePath } from "../constants";
 function CompanyLinks() {
   const { pathname } = useLocation();
   return (
-    <section className="desktop-footer" style={{ lineHeight: 1.5 }}>
-      <div style={{ padding: "22px 0 30px" }} className="footer-first">
+    <section className="desktop-footer">
+      <div className="footer-first">
         <div className="row">
           <div className="col-md-3 col-sm-4 col-xs-6">
-            <h3
-              className="footer-title footer-title-first mt-0"
-              style={{ marginTop: pathname !== homePagePath ? 0 : "" }}
-            >
+            <h3 className="footer-title footer-title-first mt-0">
               Customer Care
             </h3>
             <ul className="footer-list">
@@ -54,16 +51,8 @@ function CompanyLinks() {
               </li>
             </ul>
           </div>
-          <div
-            className="col-md-3 col-sm-4 col-xs-6"
-            style={{ paddingLeft: "21px" }}
-          >
-            <h3
-              className="footer-title footer-title-first mt-0"
-              style={{ marginTop: pathname !== homePagePath ? 0 : "" }}
-            >
-              Daraz
-            </h3>
+          <div className="col-md-3 col-sm-4 col-xs-6 footer-first-col-1">
+            <h3 className="footer-title footer-title-first mt-0">Daraz</h3>
             <ul className="footer-list">
               <li className="footer-li">
                 <a href="">About Us</a>
@@ -100,14 +89,8 @@ function CompanyLinks() {
               </li>
             </ul>
           </div>
-          <div
-            className="col-md-3 col-sm-4 col-xs-6"
-            style={{ paddingLeft: "31px" }}
-          >
-            <h3
-              className="footer-title footer-title-first mt-0"
-              style={{ marginTop: pathname !== homePagePath ? 0 : "" }}
-            >
+          <div className="col-md-3 col-sm-4 col-xs-6 footer-first-col-2">
+            <h3 className="footer-title footer-title-first mt-0">
               Daraz International
             </h3>
             <div className="d-flex align-content-center flex-wrap">
@@ -185,14 +168,8 @@ function CompanyLinks() {
               <span className="icon-yatra-pci drz-footer-sprit-link"></span>
             </div>
           </div>
-          <div
-            className="col-md-3 col-sm-4 col-xs-6"
-            style={{ paddingLeft: "40px" }}
-          >
-            <h3
-              className="footer-title footer-title-first mt-0"
-              style={{ marginTop: pathname !== homePagePath ? 0 : "" }}
-            >
+          <div className="col-md-3 col-sm-4 col-xs-6 footer-first-col-3">
+            <h3 className="footer-title footer-title-first mt-0">
               Exclusive Deals and Offers!
             </h3>
             <div className="links-wrapper">

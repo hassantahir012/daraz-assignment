@@ -1,8 +1,8 @@
 import { Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Service from "../services/service";
-import { categoryPagePath } from "../constants";
+import Service from "../../../services/service";
+import { categoryPagePath } from "../../../constants";
 function MainPageCategories() {
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
@@ -14,7 +14,7 @@ function MainPageCategories() {
     getCategories();
   }, []);
   return (
-    <div className="mb-4" style={{ paddingTop: "15px" }}>
+    <div className="mb-4 main-page-categories-container">
       <h3 className="categories-heading mb-1">Categories</h3>
       <Grid container sx={{ bgcolor: "#fff" }}>
         {categories.map((category) => (

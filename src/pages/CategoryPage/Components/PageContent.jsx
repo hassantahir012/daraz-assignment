@@ -70,58 +70,28 @@ function PageContent() {
   }, []);
   return (
     <>
-      <div style={{ width: "100%" }} className="d-flex">
+      <div className="d-flex w-100">
         <div className="filters-div">
           <Filters filter={filter} setFilter={setFilter} />
         </div>
         <div className="category-products-div">
-          <div
-            style={{
-              paddingBottom: "15px",
-              paddingTop: "24px",
-              fontSize: "14px",
-              lineHeight: "40px",
-              borderBottom: "1px solid #ececec",
-            }}
-          >
+          <div className="category-products-div-container">
             <div className="row">
               <div className="col-12 col-md-5">
                 <div>
-                  <div
-                    style={{
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                      whiteSpace: "nowrap",
-                      color: "#000000d9",
-                    }}
-                  >
+                  <div className="items-count-container">
                     <span>18,172 items found for </span>
-                    <span style={{ color: "rgb(248, 86, 6)" }}>
+                    <span className="items-count-container-name">
                       "Wardrobe Organisers"
                     </span>
                   </div>
                 </div>
               </div>
               <div className="col-12 col-md-7 d-flex sort-by-div">
-                <div
-                  style={{
-                    color: "#000000a6",
-                    marginRight: "10px",
-                  }}
-                >
-                  Sort By:
-                </div>
-                <div
-                  style={{
-                    width: "200px",
-                  }}
-                >
+                <div className="sort-by">Sort By:</div>
+                <div className="sort-by-select-container">
                   <Select
-                    style={{
-                      borderRadius: "20px",
-                      width: "100%",
-                      height: "100%",
-                    }}
+                    className="sort-by-select"
                     defaultValue={filter.sortBy}
                     onChange={handleSortByChange}
                     options={[
@@ -135,25 +105,17 @@ function PageContent() {
                     ]}
                   />
                 </div>
-                <div
-                  style={{
-                    color: "#000000a6",
-                    marginLeft: "25px",
-                    marginRight: "5px",
-                  }}
-                >
-                  View:
-                </div>
-                <div style={{ marginRight: "10px" }}>
+                <div className="view-container">View:</div>
+                <div className="view-icons-container">
                   <Icon
                     icon="material-symbols:grid-view"
-                    style={{ color: "#183545", height: 24, width: 24 }}
+                    className="grid-view-icon"
                   />
                 </div>
                 <div>
                   <Icon
                     icon="material-symbols:view-list-sharp"
-                    style={{ color: "#bcbcbc", height: 24, width: 24 }}
+                    className="list-view-icon"
                   />
                 </div>
               </div>
@@ -163,45 +125,14 @@ function PageContent() {
               className="compaign-tag--Llngs gap-2"
               data-spm="promotionFilter"
             >
-              <div
-                className="tag-box--Tuf_m"
-                style={{
-                  border: "1px solid rgb(254, 221, 205)",
-                  background: "rgb(255, 241, 234)",
-                }}
-              >
-                <span
-                  style={{
-                    color: "rgb(248, 87, 5)",
-                    fontSize: 14,
-                    fontWeight: 400,
-                  }}
-                >
-                  Show{" "}
-                </span>
-                <span
-                  style={{
-                    color: "rgb(248, 87, 5)",
-                    fontSize: 14,
-                    fontWeight: 700,
-                  }}
-                >
-                  7.7
-                </span>
-                <span
-                  style={{
-                    color: "rgb(248, 87, 5)",
-                    fontSize: 14,
-                    fontWeight: 400,
-                  }}
-                >
-                  {" "}
-                  products only
-                </span>
+              <div className="tag-box--Tuf_m">
+                <span>Show </span>
+                <span>7.7</span>
+                <span> products only</span>
               </div>
               <div onClick={openFilters} className="filter-button">
                 Filters
-                <Icon style={{ marginLeft: "5px" }} icon="ion:filter" />
+                <Icon className="filter-icon" icon="ion:filter" />
               </div>
             </div>
           </div>
@@ -246,11 +177,8 @@ function PageContent() {
         }}
         sx={{ p: 2 }}
       >
-        <div style={{ position: "relative" }}>
-          <IconButton
-            sx={{ position: "absolute", right: 5, top: 14 }}
-            onClick={closeFilters}
-          >
+        <div className="position-relative">
+          <IconButton className="filter-close-icon" onClick={closeFilters}>
             <Icon icon="mdi:close" />
           </IconButton>
           <Filters filter={filter} setFilter={setFilter} />

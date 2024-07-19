@@ -9,7 +9,7 @@ import {
   productPagePath,
   registerPagePath,
 } from "../constants";
-import CategoryUnorderedList from "./CategoryUnorderedList";
+import CategoryUnorderedList from "../pages/HomePage/components/CategoryUnorderedList";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../slices/authSlice";
 import { Icon } from "@iconify/react/dist/iconify.js";
@@ -41,17 +41,18 @@ function Header() {
   };
   const checkCursorPosition = (e) => {
     if (
-      (e.clientX >= 220 &&
+      width > 1200 &&
+      ((e.clientX >= 220 &&
         e.clientX <= 326 &&
         e.clientY >= 14 &&
         e.clientY <= 50 &&
         scroll >= 600) ||
-      ((pathname == categoryPagePath || pathname == productPagePath) &&
-        scroll < 600 &&
-        e.clientX >= 212 &&
-        e.clientX <= 312 &&
-        e.clientY >= 37 &&
-        e.clientY <= 90)
+        ((pathname == categoryPagePath || pathname == productPagePath) &&
+          scroll < 600 &&
+          e.clientX >= 212 &&
+          e.clientX <= 312 &&
+          e.clientY >= 37 &&
+          e.clientY <= 90))
     ) {
       setDisplayCategories((prev) => ({ ...prev, cat1: true }));
     } else if (
@@ -70,6 +71,7 @@ function Header() {
   const handleLogout = () => {
     dispatch(logout());
     navigate(homePagePath);
+    setAnchorEl();
   };
   const handleNavigate = (path) => {
     navigate(path);
@@ -82,7 +84,7 @@ function Header() {
       window.removeEventListener("scroll", checkScroll);
       window.removeEventListener("mousemove", checkCursorPosition);
     };
-  }, [scroll, displayCategories]);
+  }, [scroll, displayCategories, width]);
   useEffect(() => {
     window.addEventListener("resize", checkWidth);
     return () => {
@@ -93,27 +95,14 @@ function Header() {
     <>
       {displayCategories.cat1 && (
         <div
-          id="main-categories"
-          style={{
-            width: "18%",
-            backgroundColor: "#fff",
-            position: "fixed",
-            zIndex: "2",
-            top:
-              scroll < 600 &&
-              (pathname == categoryPagePath || pathname == productPagePath)
-                ? "90px"
-                : "75px",
-            left: "6%",
-            borderBottomLeftRadius: "8px",
-          }}
+          className={`cat-1 ${
+            pathname == categoryPagePath || pathname == productPagePath
+              ? "cat-1-product-or-category-page"
+              : ""
+          }`}
         >
           <CategoryUnorderedList
-            className="list-unstyled category-list mb-0 pt-2"
-            style={{
-              paddingBottom: "6px",
-              width: "100%",
-            }}
+            className="list-unstyled category-list mb-0 pt-2 w-100"
             onMouseEnter={() =>
               setDisplayCategories((prev) => ({ ...prev, cat2: true }))
             }
@@ -168,27 +157,15 @@ function Header() {
       )}
       {displayCategories.cat2 && (
         <div
-          id="sub-categories"
-          style={{
-            width: "18%",
-            backgroundColor: "#fff",
-            position: "fixed",
-            zIndex: "2",
-            top:
-              scroll < 600 &&
-              (pathname == categoryPagePath || pathname == productPagePath)
-                ? "90px"
-                : "75px",
-            left: "24%",
-          }}
+          className={`cat-1 cat-2 ${
+            scroll < 600 &&
+            (pathname == categoryPagePath || pathname == productPagePath)
+              ? "cat-1-product-or-category-page"
+              : ""
+          }`}
         >
           <CategoryUnorderedList
-            className="list-unstyled category-list mb-0 pt-2"
-            style={{
-              paddingBottom: "6px",
-              width: "100%",
-              minHeight: "338px",
-            }}
+            className="list-unstyled category-list mb-0 pt-2 cat-2-list"
             onMouseEnter={() =>
               setDisplayCategories((prev) => ({ ...prev, cat3: true }))
             }
@@ -211,31 +188,19 @@ function Header() {
       )}
       {displayCategories.cat3 && (
         <div
-          id="category-items"
-          style={{
-            width: "52%",
-            backgroundColor: "#fff",
-            position: "fixed",
-            zIndex: "2",
-            top:
-              scroll < 600 &&
-              (pathname == categoryPagePath || pathname == productPagePath)
-                ? "90px"
-                : "75px",
-            left: "42%",
-            borderBottomRightRadius: "8px",
-          }}
-          className="d-flex"
+          className={`d-flex cat-1 cat-3 ${
+            scroll < 600 &&
+            (pathname == categoryPagePath || pathname == productPagePath)
+              ? "cat-1-product-or-category-page"
+              : ""
+          }`}
           onMouseLeave={(e) => {
             if (e.clientY >= 413 || e.clientX >= 1269) {
               setDisplayCategories({ cat1: false, cat2: false, cat3: false });
             }
           }}
         >
-          <div
-            style={{ minHeight: "338px", paddingBottom: "6px" }}
-            className="pt-2"
-          >
+          <div className="pt-2 cat-3-container">
             <span className="subcat-name">Category Name</span>
             <Stack
               width={"100%"}
@@ -244,40 +209,28 @@ function Header() {
               spacing={2}
               mt={2}
             >
-              <div
-                style={{ width: "138px" }}
-                className="d-flex flex-column gap-2 justify-content-center align-items-center"
-              >
+              <div className="d-flex flex-column gap-2 justify-content-center align-items-center cat-3-items">
                 <img
                   className="catCircleImg"
                   src="https://laz-img-cdn.alicdn.com/images/ims-web/TB1wWuzGxYaK1RjSZFnXXa80pXa.jpg"
                 />
                 <span className="subcat-item-name">Casual Shirts</span>
               </div>
-              <div
-                style={{ width: "138px" }}
-                className="d-flex flex-column gap-2 justify-content-center align-items-center"
-              >
+              <div className="d-flex flex-column gap-2 justify-content-center align-items-center cat-3-items">
                 <img
                   className="catCircleImg"
                   src="https://laz-img-cdn.alicdn.com/images/ims-web/TB1wWuzGxYaK1RjSZFnXXa80pXa.jpg"
                 />
                 <span className="subcat-item-name">Casual Shirts</span>
               </div>
-              <div
-                style={{ width: "138px" }}
-                className="d-flex flex-column gap-2 justify-content-center align-items-center"
-              >
+              <div className="d-flex flex-column gap-2 justify-content-center align-items-center cat-3-items">
                 <img
                   className="catCircleImg"
                   src="https://laz-img-cdn.alicdn.com/images/ims-web/TB1wWuzGxYaK1RjSZFnXXa80pXa.jpg"
                 />
                 <span className="subcat-item-name">Casual Shirts</span>
               </div>
-              <div
-                style={{ width: "138px" }}
-                className="d-flex flex-column gap-2 justify-content-center align-items-center"
-              >
+              <div className="d-flex flex-column gap-2 justify-content-center align-items-center cat-3-items">
                 <img
                   className="catCircleImg"
                   src="https://laz-img-cdn.alicdn.com/images/ims-web/TB1wWuzGxYaK1RjSZFnXXa80pXa.jpg"
@@ -295,51 +248,37 @@ function Header() {
             : ""
         }${scroll >= 600 ? " nav-scroll-2" : ""}${
           width < 1200 ? " small-header d-flex align-items-center" : ""
-        }`}
-        style={{ position: pathname !== homePagePath && "fixed" }}
+        }${pathname !== homePagePath ? " position-fixed" : ""}`}
       >
         <div className="custom-container">
           {width >= 1200 && (
             <>
               {scroll < 600 && (
                 <div className="d-flex align-items-center justify-content-between">
-                  <div className="d-flex" style={{ gap: "1.55rem" }}>
-                    <a href="" style={{ marginTop: "-2px" }}>
+                  <div className="d-flex header-mini-links">
+                    <a href="" className="header-mini-link">
                       Become a Seller
                     </a>
-                    <a href="" style={{ marginTop: "-2px" }}>
+                    <a href="" className="header-mini-link">
                       Daraz Affiliate Program
                     </a>
-                    <a href="" style={{ marginTop: "-2px" }}>
+                    <a href="" className="header-mini-link">
                       Help & Support
                     </a>
-                    <a href="" style={{ marginTop: "-2px" }}>
+                    <a href="" className="header-mini-link">
                       Daraz Logistics Partner
                     </a>
                   </div>
-                  <div
-                    className="app-button-header ps-1"
-                    style={{
-                      paddingBottom: "0.4em",
-                      paddingTop: "0.3em",
-                      paddingRight: "0.48rem",
-                    }}
-                  >
+                  <div className="app-button-header ps-1">
                     <div className="d-flex">
                       <img
                         src={AppIcon}
                         alt=""
                         width={20}
                         height={20}
-                        style={{ marginRight: "5px" }}
+                        className="app-button-header-icon"
                       />
-                      <div
-                        style={{
-                          marginBottom: "0.05em",
-                          marginTop: "0.29em",
-                          paddingLeft: "0.2em",
-                        }}
-                      >
+                      <div className="app-button-header-text">
                         Save More on App
                       </div>
                     </div>
@@ -351,13 +290,9 @@ function Header() {
                 direction={"row"}
                 className={`w-100${scroll >= 600 ? " mt-2" : ""}`}
               >
-                <div style={{ width: "140px" }}>
+                <div className="header-logo-container">
                   <Link to={homePagePath}>
-                    <img
-                      src={logo}
-                      alt="logo"
-                      style={{ width: "120px", height: "48px" }}
-                    />
+                    <img src={logo} alt="logo" className="header-logo" />
                   </Link>
                 </div>
                 <Stack
@@ -366,7 +301,6 @@ function Header() {
                   alignItems={"center"}
                   width={"100%"}
                   sx={{
-                    // marginLeft: "0.5rem",
                     marginLeft:
                       pathname !== homePagePath || scroll >= 600
                         ? "0.5rem"
@@ -376,42 +310,26 @@ function Header() {
                 >
                   {(scroll >= 600 || pathname !== homePagePath) && (
                     <div
-                      className="categories-button d-flex align-items-center"
-                      style={{
-                        padding:
-                          pathname == homePagePath
-                            ? "9px 12px 8px 9px"
-                            : "7px 7px 8px 14px",
-                      }}
+                      className={`categories-button d-flex align-items-center ${
+                        pathname == homePagePath
+                          ? "category-btn-padding-home"
+                          : "category-btn-padding"
+                      }`}
                     >
                       Categories{" "}
                       {displayCategories.cat1 ? (
-                        <span
-                          className="tabler--chevron-up"
-                          style={{
-                            marginLeft:
-                              pathname == homePagePath ? "4px" : "4px",
-                          }}
-                        ></span>
+                        <span className="tabler--chevron-up"></span>
                       ) : (
-                        <span
-                          className="tabler--chevron-down"
-                          style={{
-                            marginLeft:
-                              pathname == homePagePath ? "4px" : "4px",
-                          }}
-                        ></span>
+                        <span className="tabler--chevron-down"></span>
                       )}
                     </div>
                   )}
                   <div
-                    style={{
-                      position: "relative",
-                      minWidth:
-                        pathname !== homePagePath || scroll >= 600
-                          ? "61.4%"
-                          : "71.4%",
-                    }}
+                    className={`position-relative ${
+                      pathname !== homePagePath || scroll >= 600
+                        ? "header-search-field-container"
+                        : "header-search-field-container-home"
+                    }`}
                   >
                     <input
                       placeholder={
@@ -420,42 +338,15 @@ function Header() {
                           ? ""
                           : "Search in Daraz"
                       }
-                      style={{
-                        border: "none",
-                        outline: "none",
-                        height: "38px",
-                        width: "100%",
-                        borderRadius: "12px",
-                        paddingLeft: "20px",
-                        fontSize: "14px",
-                        color: "#212121",
-                      }}
+                      className="header-input-field"
                       disabled={
                         pathname == loginPagePath ||
                         pathname == registerPagePath
                       }
                     />
                     {![loginPagePath, registerPagePath].includes(pathname) && (
-                      <div
-                        style={{
-                          position: "absolute",
-                          top: 5,
-                          right: 6,
-                          backgroundColor: "#FFE1D2",
-                          height: "28px",
-                          width: "50px",
-                          borderRadius: "8px",
-                          paddingLeft: "18px",
-                          paddingTop: "8px",
-                        }}
-                      >
-                        <i
-                          className="fa-solid fa-magnifying-glass"
-                          style={{
-                            color: "#f85606",
-                            fontSize: "15px",
-                          }}
-                        ></i>
+                      <div className="search-icon-container">
+                        <i className="fa-solid fa-magnifying-glass search-icon"></i>
                       </div>
                     )}
                   </div>
@@ -466,32 +357,22 @@ function Header() {
                           direction={"row"}
                           alignItems={"center"}
                           spacing={1}
-                          className="categories-button"
-                          style={{ fontWeight: 700, fontSize: "12.5px" }}
+                          className="categories-button login-btn"
                         >
                           <div>
-                            <i
-                              className="fa-regular fa-user"
-                              style={{ fontSize: "18px" }}
-                            ></i>
+                            <i className="fa-regular fa-user login-icon"></i>
                           </div>
 
-                          <div style={{ marginLeft: "12px" }}>Login</div>
+                          <div className="login-btn-text">Login</div>
                         </Stack>
                       </Link>
-                      <div style={{ marginLeft: "4px" }}>|</div>
+                      <div className="auth-btns-divider">|</div>
                       <Link to={registerPagePath}>
                         <Stack
                           direction={"row"}
                           alignItems={"center"}
                           spacing={0}
-                          className="categories-button"
-                          sx={{
-                            fontWeight: 700,
-                            fontSize: "12.5px",
-                            marginLeft: 0,
-                            minWidth: "69px",
-                          }}
+                          className="categories-button sign-up-btn"
                         >
                           <span>Sign Up</span>
                         </Stack>
@@ -503,13 +384,7 @@ function Header() {
                     direction={"row"}
                     alignItems={"center"}
                     spacing={0.5}
-                    className="categories-button "
-                    style={{
-                      fontWeight: 500,
-                      fontSize: "14px",
-                      height: "38px",
-                      marginLeft: "3px",
-                    }}
+                    className="categories-button lang-btn"
                   >
                     <span className="mdi--web-white"></span>
                     <div>EN</div>
@@ -538,8 +413,7 @@ function Header() {
                     >
                       <Icon
                         icon="material-symbols:logout-sharp"
-                        className="custom-dots me-2"
-                        style={{ width: "1.5rem", height: "1.5rem" }}
+                        className="custom-dots me-2 logout-icon"
                       />
                       <span>Logout</span>
                     </Stack>
@@ -550,45 +424,17 @@ function Header() {
           )}
           {width < 1200 && (
             <Stack direction={"row"} spacing={1} alignItems={"center"}>
-              <div style={{ position: "relative", width: "100%" }}>
+              <div className="position-relative w-100">
                 <input
                   placeholder="Search in Daraz"
-                  style={{
-                    border: "none",
-                    outline: "none",
-                    height: "38px",
-                    width: "100%",
-                    borderRadius: "12px",
-                    paddingLeft: "20px",
-                    fontSize: "14px",
-                    color: "#212121",
-                  }}
+                  className="header-input-field"
                 />
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 4,
-                    right: 10,
-                    backgroundColor: "#FFE1D2",
-                    height: "30px",
-                    width: "52px",
-                    borderRadius: "10px",
-                    paddingLeft: "18px",
-                    paddingTop: "8px",
-                  }}
-                >
-                  <i
-                    className="fa-solid fa-magnifying-glass"
-                    style={{
-                      color: "#f85606",
-                      fontSize: "15px",
-                    }}
-                  ></i>
+                <div className="search-icon-container-small">
+                  <i className="fa-solid fa-magnifying-glass search-icon"></i>
                 </div>
               </div>
               <i
-                className="fa-solid fa-bars"
-                style={{ fontSize: "20px", cursor: "pointer" }}
+                className="fa-solid fa-bars nav-collapse-icon"
                 onClick={(e) => setAnchorEl(e.currentTarget)}
               ></i>
               <Menu
@@ -609,12 +455,21 @@ function Header() {
                   <MenuItem onClick={() => handleNavigate(homePagePath)}>
                     Home
                   </MenuItem>
-                  <MenuItem onClick={() => handleNavigate(loginPagePath)}>
-                    Login
-                  </MenuItem>
-                  <MenuItem onClick={() => handleNavigate(registerPagePath)}>
-                    Signup
-                  </MenuItem>
+                  {!isAuthenticated && (
+                    <>
+                      <MenuItem onClick={() => handleNavigate(loginPagePath)}>
+                        Login
+                      </MenuItem>
+                      <MenuItem
+                        onClick={() => handleNavigate(registerPagePath)}
+                      >
+                        Signup
+                      </MenuItem>
+                    </>
+                  )}
+                  {isAuthenticated && (
+                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                  )}
                   <MenuItem>Cart</MenuItem>
                   <MenuItem onClick={() => handleNavigate(categoryPagePath)}>
                     Category

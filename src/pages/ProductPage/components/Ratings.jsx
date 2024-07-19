@@ -2,7 +2,7 @@ import React from "react";
 
 function Ratings() {
   return (
-    <div className="review-new-wrapper" style={{ fontFamily: "Arial" }}>
+    <div className="review-new-wrapper">
       <div className="review-header">Ratings & Reviews</div>
       <div>
         <div className="review-info">
@@ -19,52 +19,26 @@ function Ratings() {
               </span>
             </div>
             <div className="star-box">
-              <div
-                className="container-star "
-                style={{
-                  height: "21.28px",
-                  width: "106.4px",
-                }}
-              >
+              <div className="container-star star-image-2-container">
                 <img
-                  className="star"
+                  className="star star-image-2"
                   src="https://laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                  style={{
-                    height: "21.28px",
-                    width: "21.28px",
-                  }}
                 />
                 <img
-                  className="star"
+                  className="star star-image-2"
                   src="https://laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                  style={{
-                    height: "21.28px",
-                    width: "21.28px",
-                  }}
                 />
                 <img
-                  className="star"
+                  className="star star-image-2"
                   src="https://laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                  style={{
-                    height: "21.28px",
-                    width: "21.28px",
-                  }}
                 />
                 <img
-                  className="star"
+                  className="star star-image-2"
                   src="https://laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                  style={{
-                    height: "21.28px",
-                    width: "21.28px",
-                  }}
                 />
                 <img
-                  className="star"
+                  className="star star-image-2"
                   src="https://laz-img-cdn.alicdn.com/tfs/TB16gwRdOqAXuNjy1XdXXaYcVXa-64-64.png"
-                  style={{
-                    height: "21.28px",
-                    width: "21.28px",
-                  }}
                 />
               </div>
             </div>
@@ -77,312 +51,157 @@ function Ratings() {
                 className="m-0 p-0"
               >
                 <li>
-                  <div
-                    className="container-star progress-title"
-                    style={{
-                      height: "15.96px",
-                      width: "79.8px",
-                    }}
-                  >
+                  <div className="container-star progress-title star-image-container">
                     <img
-                      className="star"
+                      className="star star-image-1"
                       src="https://laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        height: "15.96px",
-                        width: "15.96px",
-                      }}
                     />
                     <img
-                      className="star"
+                      className="star star-image-1"
                       src="https://laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        height: "15.96px",
-                        width: "15.96px",
-                      }}
                     />
                     <img
-                      className="star"
+                      className="star star-image-1"
                       src="https://laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        height: "15.96px",
-                        width: "15.96px",
-                      }}
                     />
                     <img
-                      className="star"
+                      className="star star-image-1"
                       data-spm-anchor-id="a2a0e.pdp.review_v3.i0.3a1350c4oBXgzB"
                       src="https://laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        height: "15.96px",
-                        width: "15.96px",
-                      }}
                     />
                     <img
-                      className="star"
+                      className="star star-image-1"
                       src="https://laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        height: "15.96px",
-                        width: "15.96px",
-                      }}
                     />
                   </div>
                   <div className="progress-wrap">
                     <div className="pdp-review-progress-new">
                       <div className="bar bg" />
-                      <div
-                        className="bar fg"
-                        style={{
-                          width: "69.5258%",
-                        }}
-                      />
+                      <div className="bar fg fg-1" />
                     </div>
                   </div>
                   <span className="percent">2302</span>
                 </li>
                 <li>
-                  <div
-                    className="container-star progress-title"
-                    style={{
-                      height: "15.96px",
-                      width: "79.8px",
-                    }}
-                  >
+                  <div className="container-star progress-title star-image-container">
                     <img
-                      className="star"
+                      className="star star-image-1"
                       src="https://laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        height: "15.96px",
-                        width: "15.96px",
-                      }}
                     />
                     <img
-                      className="star"
+                      className="star star-image-1"
                       src="https://laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        height: "15.96px",
-                        width: "15.96px",
-                      }}
                     />
                     <img
-                      className="star"
+                      className="star star-image-1"
                       src="https://laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        height: "15.96px",
-                        width: "15.96px",
-                      }}
                     />
                     <img
-                      className="star"
+                      className="star star-image-1"
                       src="https://laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        height: "15.96px",
-                        width: "15.96px",
-                      }}
                     />
                     <img
-                      className="star"
+                      className="star star-image-1"
                       src="https://laz-img-cdn.alicdn.com/tfs/TB18ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        height: "15.96px",
-                        width: "15.96px",
-                      }}
                     />
                   </div>
                   <div className="progress-wrap">
                     <div className="pdp-review-progress-new">
                       <div className="bar bg" />
-                      <div
-                        className="bar fg"
-                        style={{
-                          width: "16.3697%",
-                        }}
-                      />
+                      <div className="bar fg fg-2" />
                     </div>
                   </div>
                   <span className="percent">542</span>
                 </li>
                 <li>
-                  <div
-                    className="container-star progress-title"
-                    style={{
-                      height: "15.96px",
-                      width: "79.8px",
-                    }}
-                  >
+                  <div className="container-star progress-title star-image-container">
                     <img
-                      className="star"
+                      className="star star-image-1"
                       src="https://laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        height: "15.96px",
-                        width: "15.96px",
-                      }}
                     />
                     <img
-                      className="star"
+                      className="star star-image-1"
                       src="https://laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        height: "15.96px",
-                        width: "15.96px",
-                      }}
                     />
                     <img
-                      className="star"
+                      className="star star-image-1"
                       src="https://laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        height: "15.96px",
-                        width: "15.96px",
-                      }}
                     />
                     <img
-                      className="star"
+                      className="star star-image-1"
                       src="https://laz-img-cdn.alicdn.com/tfs/TB18ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        height: "15.96px",
-                        width: "15.96px",
-                      }}
                     />
                     <img
-                      className="star"
+                      className="star star-image-1"
                       src="https://laz-img-cdn.alicdn.com/tfs/TB18ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        height: "15.96px",
-                        width: "15.96px",
-                      }}
                     />
                   </div>
                   <div className="progress-wrap">
                     <div className="pdp-review-progress-new">
                       <div className="bar bg" />
-                      <div
-                        className="bar fg"
-                        style={{
-                          width: "6.94654%",
-                        }}
-                      />
+                      <div className="bar fg fg-3" />
                     </div>
                   </div>
                   <span className="percent">230</span>
                 </li>
                 <li>
-                  <div
-                    className="container-star progress-title"
-                    style={{
-                      height: "15.96px",
-                      width: "79.8px",
-                    }}
-                  >
+                  <div className="container-star progress-title star-image-container">
                     <img
-                      className="star"
+                      className="star star-image-1"
                       src="https://laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        height: "15.96px",
-                        width: "15.96px",
-                      }}
                     />
                     <img
-                      className="star"
+                      className="star star-image-1"
                       src="https://laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        height: "15.96px",
-                        width: "15.96px",
-                      }}
                     />
                     <img
-                      className="star"
+                      className="star star-image-1"
                       src="https://laz-img-cdn.alicdn.com/tfs/TB18ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        height: "15.96px",
-                        width: "15.96px",
-                      }}
                     />
                     <img
-                      className="star"
+                      className="star star-image-1"
                       src="https://laz-img-cdn.alicdn.com/tfs/TB18ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        height: "15.96px",
-                        width: "15.96px",
-                      }}
                     />
                     <img
-                      className="star"
+                      className="star star-image-1"
                       src="https://laz-img-cdn.alicdn.com/tfs/TB18ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        height: "15.96px",
-                        width: "15.96px",
-                      }}
                     />
                   </div>
                   <div className="progress-wrap">
                     <div className="pdp-review-progress-new">
                       <div className="bar bg" />
-                      <div
-                        className="bar fg"
-                        style={{
-                          width: "2.26518%",
-                        }}
-                      />
+                      <div className="bar fg fg-4" />
                     </div>
                   </div>
                   <span className="percent">75</span>
                 </li>
                 <li>
-                  <div
-                    className="container-star progress-title"
-                    style={{
-                      height: "15.96px",
-                      width: "79.8px",
-                    }}
-                  >
+                  <div className="container-star progress-title star-image-container">
                     <img
-                      className="star"
+                      className="star star-image-1"
                       src="https://laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        height: "15.96px",
-                        width: "15.96px",
-                      }}
                     />
                     <img
-                      className="star"
+                      className="star star-image-1"
                       src="https://laz-img-cdn.alicdn.com/tfs/TB18ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        height: "15.96px",
-                        width: "15.96px",
-                      }}
                     />
                     <img
-                      className="star"
+                      className="star star-image-1"
                       src="https://laz-img-cdn.alicdn.com/tfs/TB18ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        height: "15.96px",
-                        width: "15.96px",
-                      }}
                     />
                     <img
-                      className="star"
+                      className="star star-image-1"
                       src="https://laz-img-cdn.alicdn.com/tfs/TB18ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        height: "15.96px",
-                        width: "15.96px",
-                      }}
                     />
                     <img
-                      className="star"
+                      className="star star-image-1"
                       src="https://laz-img-cdn.alicdn.com/tfs/TB18ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        height: "15.96px",
-                        width: "15.96px",
-                      }}
                     />
                   </div>
                   <div className="progress-wrap">
                     <div className="pdp-review-progress-new">
                       <div className="bar bg" />
-                      <div
-                        className="bar fg"
-                        style={{
-                          width: "4.89278%",
-                        }}
-                      />
+                      <div className="bar fg fg-5" />
                     </div>
                   </div>
                   <span className="percent">162</span>
@@ -405,125 +224,60 @@ function Ratings() {
                 </div>
               </div>
               <div className="review-tag">
-                <div
-                  style={{
-                    alignItems: "center",
-                    display: "flex",
-                  }}
-                >
-                  <div
-                    style={{
-                      alignItems: "center",
-                      display: "flex",
-                    }}
-                  >
+                <div className="d-flex align-items-center">
+                  <div className="d-flex align-items-center">
                     <img
                       alt=""
                       src="https://laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        marginRight: "4px",
-                        width: "16px",
-                      }}
+                      className="review-tag-image"
                     />
                     5
                   </div>
                 </div>
               </div>
               <div className="review-tag">
-                <div
-                  style={{
-                    alignItems: "center",
-                    display: "flex",
-                  }}
-                >
-                  <div
-                    style={{
-                      alignItems: "center",
-                      display: "flex",
-                    }}
-                  >
+                <div className="d-flex align-items-center">
+                  <div className="d-flex align-items-center">
                     <img
                       alt=""
                       src="https://laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        marginRight: "4px",
-                        width: "16px",
-                      }}
+                      className="review-tag-image"
                     />
                     4
                   </div>
                 </div>
               </div>
               <div className="review-tag">
-                <div
-                  style={{
-                    alignItems: "center",
-                    display: "flex",
-                  }}
-                >
-                  <div
-                    style={{
-                      alignItems: "center",
-                      display: "flex",
-                    }}
-                  >
+                <div className="d-flex align-items-center">
+                  <div className="d-flex align-items-center">
                     <img
                       alt=""
                       src="https://laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        marginRight: "4px",
-                        width: "16px",
-                      }}
+                      className="review-tag-image"
                     />
                     3
                   </div>
                 </div>
               </div>
               <div className="review-tag">
-                <div
-                  style={{
-                    alignItems: "center",
-                    display: "flex",
-                  }}
-                >
-                  <div
-                    style={{
-                      alignItems: "center",
-                      display: "flex",
-                    }}
-                  >
+                <div className="d-flex align-items-center">
+                  <div className="d-flex align-items-center">
                     <img
                       alt=""
                       src="https://laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        marginRight: "4px",
-                        width: "16px",
-                      }}
+                      className="review-tag-image"
                     />
                     2
                   </div>
                 </div>
               </div>
               <div className="review-tag">
-                <div
-                  style={{
-                    alignItems: "center",
-                    display: "flex",
-                  }}
-                >
-                  <div
-                    style={{
-                      alignItems: "center",
-                      display: "flex",
-                    }}
-                  >
+                <div className="d-flex align-items-center">
+                  <div className="d-flex align-items-center">
                     <img
                       alt=""
                       src="https://laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                      style={{
-                        marginRight: "4px",
-                        width: "16px",
-                      }}
+                      className="review-tag-image"
                     />
                     1
                   </div>
@@ -586,52 +340,26 @@ function Ratings() {
         >
           <div className="review-item">
             <div className="review-content-fl">
-              <div
-                className="container-star "
-                style={{
-                  height: "13.3px",
-                  width: "66.5px",
-                }}
-              >
+              <div className="container-star star-image-3-container">
                 <img
-                  className="star"
+                  className="star star-image-3"
                   src="//laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                  style={{
-                    height: "13.3px",
-                    width: "13.3px",
-                  }}
                 />
                 <img
-                  className="star"
+                  className="star star-image-3"
                   src="//laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                  style={{
-                    height: "13.3px",
-                    width: "13.3px",
-                  }}
                 />
                 <img
-                  className="star"
+                  className="star star-image-3"
                   src="//laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                  style={{
-                    height: "13.3px",
-                    width: "13.3px",
-                  }}
                 />
                 <img
-                  className="star"
+                  className="star star-image-3"
                   src="//laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                  style={{
-                    height: "13.3px",
-                    width: "13.3px",
-                  }}
                 />
                 <img
-                  className="star"
+                  className="star star-image-3"
                   src="//laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                  style={{
-                    height: "13.3px",
-                    width: "13.3px",
-                  }}
                 />
               </div>
               <div className="user">M S.</div>
@@ -717,52 +445,26 @@ function Ratings() {
           </div>
           <div className="review-item">
             <div className="review-content-fl">
-              <div
-                className="container-star "
-                style={{
-                  height: "13.3px",
-                  width: "66.5px",
-                }}
-              >
+              <div className="container-star star-image-3-container">
                 <img
-                  className="star"
+                  className="star star-image-3"
                   src="//laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                  style={{
-                    height: "13.3px",
-                    width: "13.3px",
-                  }}
                 />
                 <img
-                  className="star"
+                  className="star star-image-3"
                   src="//laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                  style={{
-                    height: "13.3px",
-                    width: "13.3px",
-                  }}
                 />
                 <img
-                  className="star"
+                  className="star star-image-3"
                   src="//laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                  style={{
-                    height: "13.3px",
-                    width: "13.3px",
-                  }}
                 />
                 <img
-                  className="star"
+                  className="star star-image-3"
                   src="//laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                  style={{
-                    height: "13.3px",
-                    width: "13.3px",
-                  }}
                 />
                 <img
-                  className="star"
+                  className="star star-image-3"
                   src="//laz-img-cdn.alicdn.com/tfs/TB18ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                  style={{
-                    height: "13.3px",
-                    width: "13.3px",
-                  }}
                 />
               </div>
               <div className="user">3***6</div>
@@ -823,52 +525,26 @@ function Ratings() {
           </div>
           <div className="review-item">
             <div className="review-content-fl">
-              <div
-                className="container-star "
-                style={{
-                  height: "13.3px",
-                  width: "66.5px",
-                }}
-              >
+              <div className="container-star star-image-3-container">
                 <img
-                  className="star"
+                  className="star star-image-3"
                   src="//laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                  style={{
-                    height: "13.3px",
-                    width: "13.3px",
-                  }}
                 />
                 <img
-                  className="star"
+                  className="star star-image-3"
                   src="//laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                  style={{
-                    height: "13.3px",
-                    width: "13.3px",
-                  }}
                 />
                 <img
-                  className="star"
+                  className="star star-image-3"
                   src="//laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                  style={{
-                    height: "13.3px",
-                    width: "13.3px",
-                  }}
                 />
                 <img
-                  className="star"
+                  className="star star-image-3"
                   src="//laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                  style={{
-                    height: "13.3px",
-                    width: "13.3px",
-                  }}
                 />
                 <img
-                  className="star"
+                  className="star star-image-3"
                   src="//laz-img-cdn.alicdn.com/tfs/TB19ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"
-                  style={{
-                    height: "13.3px",
-                    width: "13.3px",
-                  }}
                 />
               </div>
               <div className="user">Muhammad I.</div>

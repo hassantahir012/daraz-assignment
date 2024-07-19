@@ -16,9 +16,7 @@ function MessageBox() {
               />
             </svg>
           </div>
-          <div className="im-app__minimize-title" style={{ marginTop: "4px" }}>
-            Messages
-          </div>
+          <div className="im-app__minimize-title">Messages</div>
         </div>
       </button>
     </div>

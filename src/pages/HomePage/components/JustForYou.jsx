@@ -1,8 +1,8 @@
 import { Grid, Rating } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Service from "../services/service";
-import { productPagePath } from "../constants";
+import Service from "../../../services/service";
+import { productPagePath } from "../../../constants";
 function JustForYou() {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
@@ -16,9 +16,7 @@ function JustForYou() {
   return (
     <div>
       <div className="heading-header">
-        <div className="heading" style={{ marginBottom: "-17px" }}>
-          Just For You
-        </div>
+        <div className="heading">Just For You</div>
         <Grid container columnSpacing={1} rowSpacing={2}>
           {products.map((product) => (
             <Grid item xs={12} sm={6} md={3} lg={2} key={product.id}>
@@ -29,16 +27,12 @@ function JustForYou() {
                 <div>
                   <img src={product.image} width="100%" />
                 </div>
-                <div style={{ padding: "4px 8px 12px" }}>
-                  <div style={{ height: "12px" }}>
+                <div className="just-for-u-item-desc">
+                  <div className="daraz-mall-image-container">
                     {product.is_daraz_mall && (
                       <img
                         src="https://img.alicdn.com/imgextra/i2/O1CN01m9OC6a1UK86X51Dcq_!!6000000002498-2-tps-108-54.png"
-                        height={"12px"}
-                        style={{
-                          minWidth: "12px",
-                          marginTop: "-26px",
-                        }}
+                        className="daraz-mall-image"
                       />
                     )}
                   </div>
@@ -70,14 +64,7 @@ function JustForYou() {
             </Grid>
           ))}
         </Grid>
-        <div
-          className="d-flex justify-content-center"
-          style={{
-            marginTop: "20px",
-            paddingTop: "20px",
-            paddingBottom: "9px",
-          }}
-        >
+        <div className="d-flex justify-content-center load-more-button-container">
           <a href="" className="load-more-button">
             LOAD MORE
           </a>

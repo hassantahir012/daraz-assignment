@@ -10,17 +10,7 @@ function FacebookButton({ customClass }) {
         customClass
       }
     >
-      <Icon
-        icon="uim:facebook-f"
-        style={{
-          color: "white",
-          height: "1.2rem",
-          width: "1.2rem",
-          marginRight: "14px",
-          marginTop: "-5px",
-        }}
-      />{" "}
-      Facebook
+      <Icon icon="uim:facebook-f" className="facebook-icon" /> Facebook
     </button>
   );
 }

@@ -7,15 +7,12 @@ import CompanyLinks from "../../components/CompanyLinks";
 function CategoryPage() {
   return (
     <>
-      <div
-        className="custom-container custom-container-body"
-        style={{ width: "89%" }}
-      >
+      <div className="custom-container custom-container-body category-page-container">
         <BreadCrumbs />
         <PageContent />
       </div>
       <div className="homepage-body w-100">
-        <div style={{ width: "89%", margin: "auto" }}>
+        <div className="category-company-links">
           <CompanyLinks />
         </div>
       </div>

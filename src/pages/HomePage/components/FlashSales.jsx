@@ -1,8 +1,8 @@
 import { Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Service from "../services/service";
-import { productPagePath } from "../constants";
+import Service from "../../../services/service";
+import { productPagePath } from "../../../constants";
 function FlashSales() {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
@@ -47,20 +47,22 @@ function FlashSales() {
     <div className="mb-4">
       <h3 className="flash-sales-heading mb-1">Flash Sale</h3>
       <div className="card-fs-content-header-parent">
-        <div className="d-flex justify-content-between card-fs-content-header ps-4 pe-2">
-          <div className="d-flex">
+        <div className="d-flex justify-content-between card-fs-content-header flex-wrap ps-4 pe-2">
+          <div className="d-flex flex-wrap">
             <div className="fs-status-text">On Sale Now</div>
-            <div className="ms-5 fs-timer-text">Ending in</div>
-            <div className="fs-timer-count">
-              {time.hours.toString().padStart(2, "0")}
-            </div>
-            <div style={{ color: "#ff6801" }}>:</div>
-            <div className="fs-timer-count">
-              {time.minutes.toString().padStart(2, "0")}
-            </div>
-            <div style={{ color: "#ff6801" }}>:</div>
-            <div className="fs-timer-count">
-              {time.seconds.toString().padStart(2, "0")}
+            <div className="d-flex">
+              <div className="ms-5 fs-timer-text">Ending in</div>
+              <div className="fs-timer-count">
+                {time.hours.toString().padStart(2, "0")}
+              </div>
+              <div className="timer-colons">:</div>
+              <div className="fs-timer-count">
+                {time.minutes.toString().padStart(2, "0")}
+              </div>
+              <div className="timer-colons">:</div>
+              <div className="fs-timer-count">
+                {time.seconds.toString().padStart(2, "0")}
+              </div>
             </div>
           </div>
           <div>
@@ -79,7 +81,7 @@ function FlashSales() {
                 <div className="mb-1">
                   <img src={product.image} alt="" width="100%" />
                 </div>
-                <div style={{ margin: "0 8px" }}>
+                <div className="card-desc">
                   <div className="card-title">{product.title}</div>
                   <div className="card-price">Rs.{product.current_price}</div>
                   <div className="origional-price-card">

@@ -10,17 +10,7 @@ function GoogleButton({ customClass = "" }) {
         customClass
       }
     >
-      <Icon
-        icon="jam:google-plus"
-        style={{
-          color: "white",
-          height: "2rem",
-          width: "2rem",
-          marginRight: "14px",
-          marginTop: "-5px",
-        }}
-      />{" "}
-      Google
+      <Icon icon="jam:google-plus" className="google-icon" /> Google
     </button>
   );
 }

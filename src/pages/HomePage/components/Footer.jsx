@@ -5,7 +5,7 @@ function Footer() {
     <div className="footer-third">
       <div className="custom-container custom-container-body p-0">
         <div className="row">
-          <div className="col-12 col-md-6 p-0" style={{ columnCount: 2 }}>
+          <div className="col-12 col-md-6 p-0 footer-third-col-1">
             <div className="drz-footer-about">
               <h1 className="drz-footer-title">
                 How Daraz Transformed Online Shopping in Pakistan
@@ -13,7 +13,7 @@ function Footer() {
             </div>
             <div className="drz-footer-about">
               <p className="particle"></p>
-              <div style={{ fontSize: "10px", lineHeight: "16px" }}>
+              <div className="footer-third-col-content">
                 Daraz first made waves in Pakistan’s e-commerce market after its
                 introduction in 2012. We have since grown to become Pakistan’s
                 largest platform for online shopping with a network spread
@@ -34,22 +34,14 @@ function Footer() {
             </div>
             <div className="drz-footer-about">
               <h1 className="drz-footer-title"></h1>
-              <h2
-                style={{
-                  fontSize: 14,
-                  fontWeight: 400,
-                  lineHeight: "20px",
-                  margin: "0 0 10px",
-                  color: "#606060",
-                }}
-              >
+              <h2 className="footer-third-first-heading">
                 What Makes Us Different from Other Online Shopping Platforms?
               </h2>
             </div>
             <div className="drz-footer-about">
               <p className="practical"></p>
-              <div style={{ fontSize: 10, lineHeight: "16px" }}>
-                <b style={{ fontWeight: 600 }}>
+              <div className="footer-third-col-content">
+                <b className="footer-third-headings">
                   Select from the Largest Online Marketplace in Pakistan
                 </b>
                 <br /> With over 15 million products to select from, Daraz
@@ -57,7 +49,7 @@ function Footer() {
                 in the country. Whether you’re looking for electronics, apparel,
                 appliances, or groceries – there is something for everyone.
                 <br /> <br />{" "}
-                <b style={{ fontWeight: 600 }}>Hassle Free Delivery </b>
+                <b className="footer-third-headings">Hassle Free Delivery </b>
                 <br /> Online shopping is only as good as its execution and
                 Daraz promises hassle free delivery right from the moment you
                 order to when your package is dropped at your door. We cater to
@@ -67,7 +59,7 @@ function Footer() {
                 your order, we have a simple 7-day return or exchange policy.{" "}
                 <br />
                 <br />{" "}
-                <b style={{ fontWeight: 600 }}>
+                <b className="footer-third-headings">
                   Payment Options to Suit Every Style{" "}
                 </b>
                 <br /> You can choose to pay through a credit/debit card, opt
@@ -77,7 +69,9 @@ function Footer() {
                 secure, easy way to make payments. We also have easypaisa &amp;
                 jazzcash payment method for our customers' ease <br />
                 <br />{" "}
-                <b style={{ fontWeight: 600 }}>Shop from Verified Vendors </b>
+                <b className="footer-third-headings">
+                  Shop from Verified Vendors{" "}
+                </b>
                 <br /> Daraz understands that online shopping in Pakistan comes
                 with its fair share of risks. This is why with Daraz Marketplace
                 and Daraz Mall customers have the security of choosing from
@@ -88,8 +82,8 @@ function Footer() {
             </div>
             <div className="drz-footer-about">
               <p className="particle" />
-              <div style={{ fontSize: 10, lineHeight: "16px" }}>
-                <b style={{ fontWeight: 600 }}>
+              <div className="footer-third-col-content">
+                <b className="footer-third-headings">
                   Shop Around the World with Daraz Global Collection{" "}
                 </b>
                 <br /> International sellers and local convenience come together
@@ -100,7 +94,7 @@ function Footer() {
                 won’t find anywhere else when you’re online shopping in
                 Pakistan. <br />
                 <br />{" "}
-                <b style={{ fontWeight: 600 }}>
+                <b className="footer-third-headings">
                   Avail Exclusive Discounts, Offers, and Promotions{" "}
                 </b>
                 <br /> Online shopping with Daraz means you get the chance to
@@ -110,7 +104,7 @@ function Footer() {
                 curated with the help of our advanced AI technology so you
                 always have deals you’ll actually be interested in! <br />
                 <br />{" "}
-                <b style={{ fontWeight: 600 }}>
+                <b className="footer-third-headings">
                   Buy Value, not Just Goods with Daraz Care{" "}
                 </b>
                 <br /> Daraz does not just cater online shopping in Pakistan but
@@ -119,7 +113,9 @@ function Footer() {
                 environmental preservation, and shelters, you can choose to make
                 a big difference with a few, simple clicks. <br />
                 <br />{" "}
-                <b style={{ fontWeight: 600 }}>Simplify Corporate Purchases </b>
+                <b className="footer-third-headings">
+                  Simplify Corporate Purchases{" "}
+                </b>
                 <br /> Who says corporate purchases need to be a complicated
                 affair? When you opt for Daraz Corporate, you get an efficient
                 and transparent solution for your business’ bulk purchasing

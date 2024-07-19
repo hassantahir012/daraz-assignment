@@ -33,19 +33,13 @@ function Products({ products = [] }) {
               <div className="voucher-wrapper--vCNzH"></div>
               <div>
                 <div className="price-wrapper--S5vS_">
-                  <div
-                    className="current-price--Jklkc"
-                    style={{ fontSize: "18px" }}
-                  >
+                  <div className="current-price--Jklkc product-price-current">
                     <span className="currency-pre--VooWJ">Rs.</span>
                     <span className="currency--GVKjl">
                       {product.current_price}
                     </span>
                   </div>
-                  <div
-                    className="original-price--lHYOH"
-                    style={{ fontSize: "10px" }}
-                  >
+                  <div className="original-price--lHYOH product-price-origional">
                     <del className="currency--GVKjl">
                       Rs. {product.origional_price}
                     </del>

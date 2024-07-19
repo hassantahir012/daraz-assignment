@@ -3,6 +3,13 @@ body {
   font-family: Roboto, -apple-system, BlinkMacSystemFont, Helvetica Neue,
     Helvetica, sans-serif !important;
 }
+.product-page {
+  background-color: #eff0f5;
+}
+.product-page-container {
+  padding-top: 6.6%;
+  padding-bottom: 20px;
+}
 /* ===== Breadcrumbs Start ===== */
 .breadcrumb_list {
   height: 48px;
@@ -198,6 +205,7 @@ body {
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  background-image: url("https://img.alicdn.com/tfs/TB14qayJSf2gK0jSZFPXXXsopXa-620-38.png");
 }
 .crazy-deal-details.pc .crazy-deal-details-process,
 .crazy-deal-details.pc .crazy-deal-details-right {
@@ -273,6 +281,34 @@ body {
 .pdp-review-summary__stars .star {
   width: 12px;
   height: 12px;
+}
+.star-image-1 {
+  height: 15.96px;
+  width: 15.96px;
+}
+.star-image-2 {
+  height: 21.28px;
+  width: 21.28px;
+}
+.star-image-2-container {
+  height: 21.28px;
+  width: 106.4px;
+}
+.star-image-3 {
+  height: 13.3px;
+  width: 13.3px;
+}
+.star-image-3-container {
+  height: 13.3px;
+  width: 66.5px;
+}
+.star-image-container {
+  height: 15.96px;
+  width: 79.8px;
+}
+.review-tag-image {
+  margin-right: 4px;
+  width: 16px;
 }
 .pdp-review-summary__link {
   display: inline-block;
@@ -752,7 +788,12 @@ body {
 }
 .delivery-option-item__title {
   line-height: 20px;
+  color: rgb(32, 32, 32);
 }
+.delivery-option-item__title span {
+  font-weight: 400;
+}
+
 .delivery-option-item__info_small {
   font-size: 12px;
 }
@@ -796,9 +837,6 @@ body {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.delivery-option-item__title {
-  line-height: 20px;
-}
 .delivery-option-item__subtitle,
 .delivery-option-item__time {
   color: #9e9e9e;
@@ -836,6 +874,9 @@ body {
 }
 .seller-name__detail-name {
   margin-right: 14px;
+}
+.name {
+  color: #212121 !important;
 }
 .pdp-link_size_l {
   font-size: 16px;
@@ -924,6 +965,7 @@ body {
 .review-new-wrapper {
   margin-bottom: 12px;
   background-color: #fff;
+  font-family: Arial;
 }
 .review-new-wrapper .review-header {
   font-size: 14px;
@@ -1544,4 +1586,73 @@ body {
   margin: 4px 0 0;
   height: 16px;
   overflow: hidden;
+}
+.fg-1 {
+  width: 69.5258%;
+}
+.fg-2 {
+  width: 16.3697%;
+}
+.fg-3 {
+  width: 6.94654%;
+}
+.fg-4 {
+  width: 2.26518%;
+}
+.fg-5 {
+  width: 4.89278%;
+}
+.color-grey {
+  color: #9e9e9e;
+}
+#block-ZctfJHq-IoQ {
+  display: inline-block;
+}
+.chat-icon {
+  color: #199cb7;
+}
+.share-icon {
+  color: #9e9e9e;
+  height: 24px;
+  width: 24px;
+}
+#block-4hMvNFHbPGr {
+  display: inline-block;
+}
+.width-div {
+  max-width: calc(100% - 106px);
+}
+.minus-icon {
+  color: #dadada;
+}
+.location-icon {
+  color: black;
+  height: 21px;
+  width: 21px;
+}
+.delivery-icon {
+  color: #757575;
+  width: 21px;
+  height: 21px;
+}
+.warranty-icon {
+  color: #757575;
+  height: 17px;
+  width: 17px;
+}
+.fw-400 {
+  font-weight: 400;
+}
+.fw-600 {
+  font-weight: 600;
+}
+.cod-icon {
+  color: #757575;
+  height: 21px;
+  width: 21px;
+}
+.cycle-icon {
+  color: #757575;
+  height: 15px;
+  width: 15px;
 }

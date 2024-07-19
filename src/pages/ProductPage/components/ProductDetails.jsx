@@ -71,13 +71,7 @@ function ProductDetails({
             sx={{ fontFamily: "Arial" }}
           >
             <div className="pdp-block module" id="module_flash_sale">
-              <div
-                className="crazy-deal-details pc"
-                style={{
-                  backgroundImage:
-                    'url("https://img.alicdn.com/tfs/TB14qayJSf2gK0jSZFPXXXsopXa-620-38.png")',
-                }}
-              >
+              <div className="crazy-deal-details pc">
                 <div
                   className="crazy-deal-details-right"
                   data-spm-anchor-id="a2a0e.pdp.0.i4.3a1350c4qWmT66"
@@ -96,12 +90,7 @@ function ProductDetails({
                       className="crazy-deal-details-procressbar"
                       data-spm-anchor-id="a2a0e.pdp.0.i6.3a1350c4qWmT66"
                     >
-                      <div
-                        className="crazy-deal-details-procressbar-inner"
-                        style={{
-                          width: "0%",
-                        }}
-                      />
+                      <div className="crazy-deal-details-procressbar-inner w-25" />
                     </div>
                     <span
                       className="crazy-deal-details-soldtext"
@@ -173,13 +162,7 @@ function ProductDetails({
                 </div>
               </div>
               <div className="pdp-block pdp-block__share" id="block-aCef3HzoQd">
-                <div
-                  className="pdp-block"
-                  id="block-ZctfJHq-IoQ"
-                  style={{
-                    display: "inline-block",
-                  }}
-                >
+                <div className="pdp-block" id="block-ZctfJHq-IoQ">
                   <div className="pdp-block module" id="module_product_share_1">
                     <div className="lazyload-wrapper ">
                       <div className="pdp-share">
@@ -187,11 +170,7 @@ function ProductDetails({
                           <span className="pdp-share__share-button-icon">
                             <Icon
                               icon="material-symbols:share"
-                              style={{
-                                color: "#9E9E9E",
-                                height: "24px",
-                                width: "24px",
-                              }}
+                              className="share-icon"
                             />
                           </span>
                         </div>
@@ -199,13 +178,7 @@ function ProductDetails({
                     </div>
                   </div>
                 </div>
-                <div
-                  className="pdp-block"
-                  id="block-4hMvNFHbPGr"
-                  style={{
-                    display: "inline-block",
-                  }}
-                >
+                <div className="pdp-block" id="block-4hMvNFHbPGr">
                   <div
                     className="pdp-block module"
                     id="module_product_wishlist_1"
@@ -237,11 +210,8 @@ function ProductDetails({
                 </a>
                 <div className="pdp-product-brand__divider" />
                 <a
-                  className="pdp-link pdp-link_size_s pdp-link_theme_blue pdp-product-brand__suggestion-link"
+                  className="pdp-link pdp-link_size_s pdp-link_theme_blue pdp-product-brand__suggestion-link width-div"
                   href=""
-                  style={{
-                    maxWidth: "calc(100% - 106px)",
-                  }}
                   target="_self"
                 >
                   More Storage & Organisation from No Brand
@@ -311,10 +281,7 @@ function ProductDetails({
                               );
                             }}
                           >
-                            <Icon
-                              icon="ic:round-plus"
-                              style={{ color: "#9e9e9e" }}
-                            />
+                            <Icon icon="ic:round-plus" className="color-grey" />
                           </span>
                         </a>
                         <a
@@ -334,7 +301,7 @@ function ProductDetails({
                           >
                             <Icon
                               icon="ic:round-minus"
-                              style={{ color: "#dadada" }}
+                              className="minus-icon"
                             />
                           </span>
                         </a>
@@ -403,7 +370,7 @@ function ProductDetails({
                       <div>
                         <Icon
                           icon="material-symbols:info-outline"
-                          style={{ color: "#9E9E9E" }}
+                          className="color-grey"
                         />
                       </div>
                     </div>
@@ -414,11 +381,7 @@ function ProductDetails({
                         <div className="location__body">
                           <Icon
                             icon="fluent:location-28-regular"
-                            style={{
-                              color: "black",
-                              height: "21px",
-                              width: "21px",
-                            }}
+                            className="location-icon"
                           />
                           <div className="location__address">
                             Sindh, Karachi - Gulshan-e-Iqbal, Block 15
@@ -439,24 +402,11 @@ function ProductDetails({
                           <div className="delivery-option-item__body">
                             <Icon
                               icon="solar:delivery-outline"
-                              style={{
-                                color: "#757575",
-                                width: "21px",
-                                height: "21px",
-                              }}
+                              className="delivery-icon"
                             />
                             <div className="delivery-option-item__info ms-2">
-                              <div
-                                className="delivery-option-item__title"
-                                style={{
-                                  color: "rgb(32, 32, 32)",
-                                }}
-                              >
-                                <span
-                                  style={{
-                                    fontWeight: "600",
-                                  }}
-                                >
+                              <div className="delivery-option-item__title">
+                                <span className="fw-600">
                                   Standard Delivery{" "}
                                 </span>
                                 <span className="delivery-option-item__info_small">
@@ -478,24 +428,11 @@ function ProductDetails({
                           <div className="delivery-option-item__body">
                             <Icon
                               icon="mdi:cash-on-delivery"
-                              style={{
-                                color: "#757575",
-                                height: "21px",
-                                width: "21px",
-                              }}
+                              className="cod-icon"
                             />
                             <div className="delivery-option-item__info ms-2">
-                              <div
-                                className="delivery-option-item__title"
-                                style={{
-                                  color: "rgb(32, 32, 32)",
-                                }}
-                              >
-                                <span
-                                  style={{
-                                    fontWeight: "400",
-                                  }}
-                                >
+                              <div className="delivery-option-item__title">
+                                <span className="fw-400">
                                   Cash on Delivery Available
                                 </span>
                               </div>
@@ -514,7 +451,7 @@ function ProductDetails({
                       <div>
                         <Icon
                           icon="material-symbols:info-outline"
-                          style={{ color: "#9E9E9E" }}
+                          className="color-grey"
                         />
                       </div>
                     </div>
@@ -526,25 +463,12 @@ function ProductDetails({
                           <div className="delivery-option-item__icon">
                             <Icon
                               icon="material-symbols:cycle-rounded"
-                              style={{
-                                color: "#757575",
-                                height: "15px",
-                                width: "15px",
-                              }}
+                              className="cycle-icon"
                             />
                           </div>
                           <div className="delivery-option-item__info">
-                            <div
-                              className="delivery-option-item__title"
-                              style={{
-                                color: "rgb(32, 32, 32)",
-                              }}
-                            >
-                              <span
-                                style={{
-                                  fontWeight: "400",
-                                }}
-                              >
+                            <div className="delivery-option-item__title">
+                              <span className="fw-400">
                                 14 days free & easy return
                               </span>
                             </div>
@@ -561,25 +485,12 @@ function ProductDetails({
                           <div className="delivery-option-item__icon">
                             <Icon
                               icon="mynaui:shield-slash"
-                              style={{
-                                color: "#757575",
-                                height: "17px",
-                                width: "17px",
-                              }}
+                              className="warranty-icon"
                             />
                           </div>
                           <div className="delivery-option-item__info">
-                            <div
-                              className="delivery-option-item__title"
-                              style={{
-                                color: "rgb(32, 32, 32)",
-                              }}
-                            >
-                              <span
-                                style={{
-                                  fontWeight: "400",
-                                }}
-                              >
+                            <div className="delivery-option-item__title">
+                              <span className="fw-400">
                                 Warranty not available
                               </span>
                             </div>
@@ -603,10 +514,9 @@ function ProductDetails({
                       <div className="seller-name__title">Sold by</div>
                       <div className="seller-name__detail" data-spm="seller">
                         <a
-                          className="pdp-link pdp-link_size_l pdp-link_theme_black seller-name__detail-name"
+                          className="pdp-link pdp-link_size_l pdp-link_theme_black seller-name__detail-name name"
                           href=""
                           target="_self"
-                          style={{ color: "#212121" }}
                         >
                           SULAIMAN COLLECTIONS
                         </a>
@@ -615,7 +525,7 @@ function ProductDetails({
                     <div className="seller-im-wrapper">
                       <span className="seller-im-content">
                         <span className="seller-im-icon">
-                          <Icon icon="oi:chat" style={{ color: "#199cb7" }} />
+                          <Icon icon="oi:chat" className="chat-icon" />
                         </span>
                         <span data-spm-anchor-id="a2a0e.pdp.seller.i0.3a1350c4qWmT66">
                           CHAT
